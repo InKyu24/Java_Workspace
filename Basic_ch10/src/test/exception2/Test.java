@@ -9,9 +9,10 @@ public class Test {
 			result = c.divide(100, 0);
 		} catch (MyException e) {
 			System.out.println(e.getMessage());
+		} finally {
+			System.out.println(result);
+			System.out.println("중요한 일 시작");			
 		}
-		System.out.println(result);
-		
-		System.out.println("중요한 일 시작");
+	
 	}
 }
