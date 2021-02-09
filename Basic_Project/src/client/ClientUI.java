@@ -26,7 +26,8 @@ public class ClientUI {
 		tf.addActionListener(bHand); // TextField에 ActionListener 추가 
 		
 		
-		// Local class
+		// Local class : Inner class의 내용이 하나의 메소드에서만 사용할 때 클래스 선언과 객체화를 동시에 하는 것
+		// WindowAdapter는 abstract 클래스로 생성자 호출이 불가하지만 FrameHandler 클래스를 익명의 클래스로 하여 호출을 한 것이라 볼 수 있다.
 		f.addWindowListener(new WindowAdapter(){
 
 			@Override
