@@ -36,7 +36,9 @@ public class ClientUI {
 				chatMsg();
 			}
 		); */
-		b1.addActionListener((ActionEvent e) -> chatMsg()); // 람다식2
+	//	b1.addActionListener((ActionEvent e) -> chatMsg()); // 람다식2
+	//	b1.addActionListener((e) -> chatMsg()); // 람다식3	
+		b1.addActionListener(e -> chatMsg()); // 람다식4		
 		
 		
 		tf.addActionListener(new ActionListener() {
