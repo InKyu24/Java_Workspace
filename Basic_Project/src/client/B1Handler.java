@@ -8,7 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 
-public class B1Handler extends WindowAdapter implements ActionListener {
+public class B1Handler implements ActionListener {
 	TextArea ta;
 	TextField tf;
 	
@@ -17,7 +17,7 @@ public class B1Handler extends WindowAdapter implements ActionListener {
 		this.tf=tf;
 	}
 
-//	// 싱글톤
+//	// 싱글톤Wi
 //	// 객체가 단 하나만 생기게 하는 class 작성 기법
 //	// 생성자를 private하게 하고
 //	// 자기 스스로 객체를 생성 (static)
@@ -41,9 +41,6 @@ public class B1Handler extends WindowAdapter implements ActionListener {
 //		this.ta=ta;
 //		this.tf=tf;
 //	}
-	
-	public void windowClosing(WindowEvent e) {
-		System.exit(0);
-	}	
+
 }
 */
