@@ -13,13 +13,13 @@ public class ClientUI {
 	TextArea ta;
 	TextField tf;
 	
-	public void chatMsg() {
+	public void chatMsg() { // Inner class
 		String msg=tf.getText();
 		ta.append(msg+"\n");
 		tf.setText("");
 	}
 	
-	public void onCreate() {
+	public void onCreate() { // Local class
 		Frame f = new Frame("나의 채팅"); // 제목있는 프레임 생성
 		Button b1 = new Button("전송"); // 문구 들어간 버튼 생성
 		Panel p=new Panel();	// 패널 생성
@@ -30,16 +30,16 @@ public class ClientUI {
 	//	B1Handler bHand = B1Handler.getInstance();
 	//	B1Handler bHand = new B1Handler();
 	//	b1Hand.setResource(ta, tf);	// 클래스 내 메소드 호출
-		b1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
+	//	[딱 하나의 메소드만 가진 인터페이스를 @functionalInterface라고 한다]
+	//  @functionalInterface는 람다식으로 표현 가능하다.	
+	/*	b1.addActionListener((ActionEvent e) -> { // 람다식
 				chatMsg();
 			}
-		}); // 버튼에 ActionListener 추가
+		); */
+		b1.addActionListener((ActionEvent e) -> chatMsg()); // 람다식2
 		
 		
 		tf.addActionListener(new ActionListener() {
-		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				chatMsg();
@@ -47,7 +47,7 @@ public class ClientUI {
 		}); // TextField에 ActionListener 추가 
 		
 		
-		// Local class : Inner class의 내용이 하나의 메소드에서만 사용할 때 클래스 선언과 객체화를 동시에 하는 것
+		// Anonymous Local class : Inner class의 내용이 하나의 메소드에서만 사용할 때 클래스 선언과 객체화를 동시에 하는 것
 		// WindowAdapter는 abstract 클래스로 생성자 호출이 불가하지만 FrameHandler 클래스를 익명의 클래스로 하여 호출을 한 것이라 볼 수 있다.
 		f.addWindowListener(new WindowAdapter(){
 			@Override
