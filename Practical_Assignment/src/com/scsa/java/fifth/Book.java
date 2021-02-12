@@ -7,5 +7,9 @@ public class Book {
 	String publisher="Jaen.kr";
 	int price=15000;
 	String desc="기본문법";
-
+	
+	@Override
+	public String toString() {
+		return isbn+"	| "+title+"	| "+author+"	| "+publisher+"	| "+price+"		| "+desc;	
+	}	
 }
