@@ -1,3 +1,4 @@
+  
 package test.encapsulation;
 
 public class MyDate {
@@ -51,5 +52,3 @@ public class MyDate {
 			System.out.println("Invalid day");
 		}	
 }
-
-
