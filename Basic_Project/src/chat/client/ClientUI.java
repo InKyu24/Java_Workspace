@@ -1,26 +1,34 @@
-package client;
+package chat.client;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class ClientUI {
 	TextArea ta;
 	TextField tf;
+	DataOutputStream out;
 
 	public void chatMsg() { 				// Inner class
 		String msg=tf.getText();
-		ta.append(msg+"\n");
+		try {
+			out.writeUTF(msg);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		tf.setText("");
 	}
 	
 	public void onCreate() { 				// Local class
 		Frame f = new Frame("나의 채팅"); 		// 제목있는 프레임 생성
-		Button b1 = new Button("전송"); 		// 문구 들어간 버튼 생성
+		Button b1 = new Button("Send"); 	// 문구 들어간 버튼 생성
 		Panel p=new Panel();				// 패널 생성
 		tf = new TextField(20); 			// 길이 20 TextField 생성
 		ta = new TextArea(); 				// TextArea 생성
@@ -130,7 +138,17 @@ public class ClientUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {			// 채팅 서버 연결
 				String chatId=tf.getText();
-				ta.setText(chatId+"님 채팅을 시작합니다");				
+				ta.setText(chatId+"님 채팅을 시작합니다\n");
+				tf.setText("");
+				try {
+					Socket s = new Socket("localhost", 9999);
+					ta.append("연결 OK\n");
+					out=new DataOutputStream(s.getOutputStream());
+				} catch (UnknownHostException e1) {				
+					e1.printStackTrace();
+				} catch (IOException e1) {				
+					e1.printStackTrace();
+				}
 			}
 		});
 		
@@ -139,8 +157,7 @@ public class ClientUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				chatMsg();
-				
+				chatMsg();				
 			}
 		});
 		
