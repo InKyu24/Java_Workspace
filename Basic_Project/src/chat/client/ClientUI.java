@@ -37,18 +37,18 @@ public class ClientUI {
 	
 	public void onCreate() { 						// Local class
 		Frame f = new Frame("나의 채팅"); 				// 제목있는 프레임 생성
-		Button b1 = new Button("join"); 			// 문구 들어간 버튼 생성
-		Button b2 = new Button("send");
+		Button b1 = new Button("참여"); 			// 문구 들어간 버튼 생성
+		Button b2 = new Button("전송");
 		Panel p=new Panel();						// 패널 생성
 		tf = new TextField(20); 					// 길이 20 TextField 생성
 		ta = new TextArea(); 						// TextArea 생성
 
 		MenuBar mb = new MenuBar();					// Menubar 생성
-		Menu file_menu = new Menu("File");			// 파일 Menu 생성
-		Menu edit_menu = new Menu("Edit");			// 편집 Menu 생성
-		MenuItem open_item = new MenuItem("Open");	 // 열기  MenuItem 생성
-		MenuItem save_item = new MenuItem("Save");	 // 저장 MenuItem 생성
-		MenuItem close_item = new MenuItem("Close"); // 닫기 MenuItem 생성
+		Menu file_menu = new Menu("파일");			// 파일 Menu 생성
+		Menu edit_menu = new Menu("편집");			// 편집 Menu 생성
+		MenuItem open_item = new MenuItem("열기");	 // 열기  MenuItem 생성
+		MenuItem save_item = new MenuItem("저장");	 // 저장 MenuItem 생성
+		MenuItem close_item = new MenuItem("닫기"); // 닫기 MenuItem 생성
 		
 		file_menu.add(open_item);					// 파일 Menu에 열기 MenuItem 추가 
 		file_menu.add(save_item);					// 파일 Menu에 저장 MenuItem 추가
@@ -83,7 +83,7 @@ public class ClientUI {
 		open_item.addActionListener(new ActionListener() {		// 열기 MenuItem 행동 메소드 설정		
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				System.out.println("file open?");
+				System.out.println("파일을 열까?");
 				FileDialog openDialog=new FileDialog(f, "열기 창", FileDialog.LOAD);
 				openDialog.setVisible(true);
 
