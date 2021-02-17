@@ -8,7 +8,6 @@ public class Test {
 		Thread th1 = new Thread(obj1);
 		Thread th2 = new Thread(obj2);
 		
-		char[] i = {h,e};
 	//	obj1.run();
 	//	obj2.run();
 		
