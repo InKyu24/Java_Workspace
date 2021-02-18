@@ -18,7 +18,7 @@ public class SelectTest {
 			System.out.println("Loading Success");
 		
 		// 2. Connection
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SHOP", "1313");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
 			System.out.println("Connection Success");
 		
 		// 3. Statement
@@ -26,15 +26,17 @@ public class SelectTest {
 			System.out.println("Statement Success");
 			
 		// 4. SQL 전송
-			rs = stmt.executeQuery("select * from memberTBL");
+			rs = stmt.executeQuery("select * from member");
 			
 		// 5. 결과 얻기
 			System.out.println("This is the Result");
 			while(rs.next()) {
-				String id = rs.getString("MEMBERID");
-				String name = rs.getString("MEMBERNAME");
-				String addr = rs.getString(3);
-				System.out.println(id+":"+name+":"+addr);
+				String id = rs.getString(1);
+				String name = rs.getString(2);
+				String date = rs.getString(3);
+				String phone = rs.getString(4);
+				int point = rs.getInt(5);
+				System.out.println(id+":"+name+":"+date+":"+phone+":"+point);
 			}	
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
