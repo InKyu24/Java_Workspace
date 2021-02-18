@@ -1,4 +1,4 @@
-package commin.entity;
+package common.entity;
 
 import java.util.Date;
 
@@ -9,12 +9,21 @@ public class Member {
 	private String phone;
 	private int point;
 	
-	public Member(String memid, String name, Date mDate, String phone) {
+	public Member(String memId, String name, Date mDate, String phone) {
 		super();
-		this.memid = memid;
-		this.name = name;
-		this.mDate = mDate;
-		this.phone = phone;
+		setMemid(memId);
+		setName(name);
+		setmDate(mDate);
+		setPhone(phone);		
+	}
+	
+	public Member(String memId, String name, Date mDate, String phone,int point) {
+		super();
+		setMemid(memId);
+		setName(name);
+		setmDate(mDate);
+		setPhone(phone);	
+		setPoint(point);
 	}
 		
 	public String getMemid() {
