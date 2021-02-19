@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import common.entity.Member;
+import common.entity.MemberDTO;
 import common.util.CafeException;
 
 public class MemberDAO {
@@ -21,7 +21,7 @@ public class MemberDAO {
 		} 
 	}
 	
-	public void insertMember (Member m) throws CafeException {
+	public void insertMember (MemberDTO m) throws CafeException {
 		Connection con = null;
 		PreparedStatement stmt = null;		
 		try {
@@ -47,7 +47,7 @@ public class MemberDAO {
 		}
 	}
 	
-	public ArrayList<Member> selectMember () throws CafeException {
+	public ArrayList<MemberDTO> selectMember () throws CafeException {
 		Connection con = null;
 		PreparedStatement stmt = null;		
 		try {
@@ -55,14 +55,14 @@ public class MemberDAO {
 			stmt = con.prepareStatement("Select * from member"); // 3
 			
 			ResultSet rs = stmt.executeQuery();
-			ArrayList<Member> list=new ArrayList<Member>();
+			ArrayList<MemberDTO> list=new ArrayList<MemberDTO>();
 			while(rs.next()) {
 				String id = rs.getString(1);
 				String name = rs.getString(2);
 				Date mDate = rs.getDate(3);
 				String phone = rs.getString(4);
 				int point = rs.getInt(5);
-				Member m = new Member(id, name, mDate, phone, point); 
+				MemberDTO m = new MemberDTO(id, name, mDate, phone, point); 
 				list.add(m);
 			}
 			int i=stmt.executeUpdate();

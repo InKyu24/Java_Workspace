@@ -2,7 +2,7 @@ package server.service;
 
 import java.util.ArrayList;
 
-import common.entity.Member;
+import common.entity.MemberDTO;
 import common.util.CafeException;
 import server.dao.MemberDAO;
 
@@ -13,11 +13,11 @@ public class MemberService {
 		mdao = new MemberDAO();
 	}
 
-	public void insertMember(Member m) throws CafeException {
+	public void insertMember(MemberDTO m) throws CafeException {
 		mdao.insertMember(m);		
 	}
 	
-	public ArrayList<Member> selectMember() throws CafeException {
+	public ArrayList<MemberDTO> selectMember() throws CafeException {
 		return mdao.selectMember();
 	}
 		

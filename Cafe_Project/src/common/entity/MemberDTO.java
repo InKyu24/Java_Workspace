@@ -2,14 +2,14 @@ package common.entity;
 
 import java.util.Date;
 
-public class Member {
+public class MemberDTO {
 	private String memid;
 	private String name;
 	private Date mDate;
 	private String phone;
 	private int point;
 	
-	public Member(String memId, String name, Date mDate, String phone) {
+	public MemberDTO(String memId, String name, Date mDate, String phone) {
 		super();
 		setMemid(memId);
 		setName(name);
@@ -17,7 +17,7 @@ public class Member {
 		setPhone(phone);		
 	}
 	
-	public Member(String memId, String name, Date mDate, String phone,int point) {
+	public MemberDTO(String memId, String name, Date mDate, String phone,int point) {
 		super();
 		setMemid(memId);
 		setName(name);

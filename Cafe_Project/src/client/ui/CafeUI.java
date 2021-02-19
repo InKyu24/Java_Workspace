@@ -10,7 +10,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import common.entity.Member;
+import common.entity.MemberDTO;
 import common.util.CafeException;
 import server.service.MemberService;
 
@@ -47,8 +47,9 @@ public class CafeUI extends Frame {
 	private void setData() {
 		try {
 			mservice=new MemberService();
-			ArrayList<Member> list = mservice.selectMember();
-			for (Member m:list) {
+			ArrayList<MemberDTO> list = mservice.selectMember();
+			
+			for (MemberDTO m:list) {
 				ta_mem.append(m.getMemid()+"\t"+m.getName()+"\t"+m.getmDate()+"\t"+m.getPhone()+"\t"+m.getPoint()+"\n");
 			}
 		} catch (CafeException e) {
@@ -204,15 +205,18 @@ public class CafeUI extends Frame {
 				String memName=tf_memName.getText();
 				String phone=tf_phone.getText();
 				Date now=new Date();
-				Member m=new Member(memId,memName,now,phone);
+				MemberDTO m=new MemberDTO(memId,memName,now,phone);
 				System.out.println(m);
 				try {
 					mservice.insertMember(m);
 					JOptionPane.showMessageDialog(CafeUI.this, "가입 되셨습니다.");
+					setData();
+					tf_memId.setText("");
+					tf_memName.setText("");
+					tf_phone.setText("");
 				} catch (CafeException e1) {
 					JOptionPane.showMessageDialog(CafeUI.this, e1.getMessage());
-				}
-				
+				}				
 			}
 		});
 	}
