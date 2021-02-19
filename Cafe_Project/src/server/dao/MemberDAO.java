@@ -36,8 +36,7 @@ public class MemberDAO {
 			int i=stmt.executeUpdate();
 			System.out.println(i+"행이 insert되었습니다");
 		} catch (SQLException e) { 
-			e.printStackTrace();
-			throw new CafeException("insertMember 실패");
+			throw new CafeException("회원 등록 실패");
 		} finally {
 			try {
 				if(stmt!=null) stmt.close();
@@ -69,7 +68,6 @@ public class MemberDAO {
 			System.out.println(i+"행이 조회되었습니다");
 			return list;
 		} catch (SQLException e) { 
-			e.printStackTrace();
 			throw new CafeException("회원 조회 실패");
 		} finally {
 			try {
@@ -80,6 +78,7 @@ public class MemberDAO {
 		}
 	} 
 	
+	//public void SelectMember
 	//public void deleteMember
 	//public void updateMember 
 }

@@ -8,15 +8,17 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import common.entity.MemberDTO;
+import common.entity.ProductDTO;
 import common.util.CafeException;
 import server.service.MemberService;
+import server.service.ProductService;
 
 public class CafeUI extends Frame {	
 	
-	MemberService mservice;
+	MemberService mService;
+	ProductService pService;
 	
 	TextField tf_memId, tf_memName,tf_phone,tf_prodCode,tf_prodName,tf_prodPrice,tf_orderMem,tf_orderProd,tf_orderQuan;
 	Button btn_memInsert,btn_memUpdate,btn_memSelect,btn_memDelete,btn_prodInsert,btn_prodUpdate,btn_prodSelect,btn_prodDelete;
@@ -25,6 +27,12 @@ public class CafeUI extends Frame {
 	
 	@Override
 	public void setVisible(boolean b) {
+		try {
+			mService=new MemberService();
+			pService=new ProductService();
+		} catch (CafeException e1) {
+			System.out.println(e1.getMessage()+" : 시스템 종료");
+		}
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -40,24 +48,32 @@ public class CafeUI extends Frame {
 		setLocation(200,300);
 		pack();
 		eventProcess();
-		setData();
+		setMemberList();
+		setProductList();
 		super.setVisible(b);
 	}
 	
-	private void setData() {
+	private void setProductList() {
 		try {
-			mservice=new MemberService();
-			ArrayList<MemberDTO> list = mservice.selectMember();
+			ArrayList<ProductDTO> list = pService.selectProduct();
+			for (ProductDTO p:list) {
+				ta_prod.append(p.getProdCode()+"\t"+p.getProdName()+"\t"+p.getPrice()+"\n");
+			}
+		} catch (CafeException e) {
+			JOptionPane.showMessageDialog(CafeUI.this, e.getMessage());
+		}
+	}
+
+	private void setMemberList() {
+		try {
+			ArrayList<MemberDTO> list = mService.selectMember();
 			
 			for (MemberDTO m:list) {
 				ta_mem.append(m.getMemid()+"\t"+m.getName()+"\t"+m.getmDate()+"\t"+m.getPhone()+"\t"+m.getPoint()+"\n");
 			}
 		} catch (CafeException e) {
 			JOptionPane.showMessageDialog(this, e.getMessage());
-			
 		}
-
-		
 	}
 
 	private void ordersPanel() {
@@ -185,12 +201,30 @@ public class CafeUI extends Frame {
 	}
 
 	private void eventProcess() {
+		btn_prodInsert.addActionListener(new ActionListener() { 
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String prodCode = tf_prodCode.getText();
+				String prodName = tf_prodName.getText();
+				int price=Integer.parseInt(tf_prodPrice.getText()); // 텍스트 내에 있는 것은 문자열 데이터니까 정수로 변환 필요 
+				ProductDTO p = new ProductDTO(prodCode, prodName, price);
+					try {
+						pService.insertProduct(p);
+						setProductList();
+						JOptionPane.showMessageDialog(CafeUI.this, "상품 등록 완료");
+					} catch (CafeException e1) {
+						JOptionPane.showMessageDialog(CafeUI.this, e1.getMessage());
+					}			
+			}
+		});
 		
 		btn_memSelect.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 조회
+				// 회원 조회
 				String memId= tf_memId.getText();
 				JOptionPane.showMessageDialog(CafeUI.this, memId+"님 조회 되셨습니다.");
 			}
@@ -200,20 +234,19 @@ public class CafeUI extends Frame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 가입
+				// 회원 가입
 				String memId= tf_memId.getText();
 				String memName=tf_memName.getText();
 				String phone=tf_phone.getText();
 				Date now=new Date();
 				MemberDTO m=new MemberDTO(memId,memName,now,phone);
-				System.out.println(m);
 				try {
-					mservice.insertMember(m);
-					JOptionPane.showMessageDialog(CafeUI.this, "가입 되셨습니다.");
-					setData();
+					mService.insertMember(m);
+					setMemberList();
 					tf_memId.setText("");
 					tf_memName.setText("");
 					tf_phone.setText("");
+					JOptionPane.showMessageDialog(CafeUI.this, "가입 되셨습니다.");
 				} catch (CafeException e1) {
 					JOptionPane.showMessageDialog(CafeUI.this, e1.getMessage());
 				}				
@@ -221,4 +254,3 @@ public class CafeUI extends Frame {
 		});
 	}
 }
-

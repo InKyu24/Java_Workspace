@@ -9,6 +9,11 @@ public class MemberDTO {
 	private String phone;
 	private int point;
 	
+	public MemberDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public MemberDTO(String memId, String name, Date mDate, String phone) {
 		super();
 		setMemid(memId);
@@ -18,11 +23,11 @@ public class MemberDTO {
 	}
 	
 	public MemberDTO(String memId, String name, Date mDate, String phone,int point) {
-		super();
-		setMemid(memId);
-		setName(name);
-		setmDate(mDate);
-		setPhone(phone);	
+		this(memId, name, mDate, phone);
+	// 	setMemid(memId);
+	//	setName(name);
+	//	setmDate(mDate);
+	//	setPhone(phone);	
 		setPoint(point);
 	}
 		
