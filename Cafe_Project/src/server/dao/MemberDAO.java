@@ -100,6 +100,44 @@ public class MemberDAO {
 			}
 		}
 	}
-	//public void deleteMember
-	//public void updateMember 
+
+	public void deleteMember(String memID) throws CafeException {
+		Connection con = null;
+		PreparedStatement stmt = null;		
+		try {
+			con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
+			stmt = con.prepareStatement("Delete from member where memID =?");
+			stmt.setString(1, memID);
+			stmt.executeUpdate();
+		} catch (SQLException e) { 
+			throw new CafeException("회원 삭제 실패");
+		} finally {
+			try {
+				if(stmt!=null) stmt.close();
+				if(con!=null) con.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+	
+	public void updateMember(MemberDTO m) throws CafeException {
+		Connection con = null;
+		PreparedStatement stmt = null;		
+		try {
+			con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
+			stmt = con.prepareStatement("Update member SET memname=?, phone=? WHERE memid=?");
+			stmt.setString(1, m.getName());
+			stmt.setString(2, m.getPhone());
+			stmt.setString(3, m.getMemID());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new CafeException("회원 수정 실패");
+		}finally {
+			try {
+				if(stmt!=null) stmt.close();
+				if(con!=null) con.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
 }

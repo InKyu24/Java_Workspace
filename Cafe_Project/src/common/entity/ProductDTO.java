@@ -8,13 +8,16 @@ public class ProductDTO {
 	public ProductDTO() {
 		super();
 	}
-	
-	public ProductDTO(String prodCode, String prodName, int price) {
-		super();
+	public ProductDTO(String prodCode) {
 		setProdCode(prodCode);
+	}
+	public ProductDTO(String prodCode, String prodName, int price) {
+		this(prodCode);
 		setProdName(prodName);
 		setPrice(price);
 	}
+	
+
 	public String getProdCode() {
 		return prodCode;
 	}

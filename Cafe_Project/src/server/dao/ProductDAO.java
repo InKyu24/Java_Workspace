@@ -72,14 +72,46 @@ public class ProductDAO {
 		}
 	}
 	
-	public void updateProduct() {
-		
+	public void updateProduct(ProductDTO p) throws CafeException {
+		Connection con=null;
+		PreparedStatement stmt=null;
+		try {
+			con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
+			stmt = con.prepareStatement("Update product SET ProdName=?, price=? WHERE ProdCode=?");
+			stmt.setString(1, p.getProdName());
+			stmt.setInt(2, p.getPrice());
+			stmt.setString(3, p.getProdCode());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new CafeException("제품 수정 실패");
+		}finally {
+			try {
+				if(stmt!=null) stmt.close();
+				if(con!=null) con.close();
+			} catch (SQLException e) {
+			}
+		}
 	}
 	
-	public void deleteProduct() {
-		
+	public void deleteProduct(ProductDTO p) throws CafeException {
+		Connection con=null;
+		PreparedStatement stmt=null;
+		try {
+			con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
+			stmt = con.prepareStatement("Delete from product WHERE ProdCode=?");
+			stmt.setString(1, p.getProdCode());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new CafeException("제품 삭제 실패");
+		}finally {
+			try {
+				if(stmt!=null) stmt.close();
+				if(con!=null) con.close();
+			} catch (SQLException e) {
+			}
+		}
 	}
-
+	
 	public String selectProduct(String prodCode) throws CafeException {
 		Connection con=null;
 		PreparedStatement stmt=null;

@@ -237,8 +237,7 @@ public class CafeUI extends Frame {
 				} catch (CafeException e1) {
 					JOptionPane.showMessageDialog(CafeUI.this, e1.getMessage());
 				}
-		});
-		
+		});	
 		
 		btn_prodInsert.addActionListener(new ActionListener() { 
 			@Override
@@ -258,6 +257,55 @@ public class CafeUI extends Frame {
 					} catch (CafeException e1) {
 						JOptionPane.showMessageDialog(CafeUI.this, e1.getMessage());
 					}			
+			}
+		});
+		
+		btn_prodDelete.addActionListener(e-> {
+			String prodCode = tf_prodCode.getText();
+			ProductDTO p=new ProductDTO(prodCode);
+			try {
+				pService.deleteProduct(p);
+				setProductList();
+				tf_prodCode.setText("");
+				JOptionPane.showMessageDialog(CafeUI.this, prodCode+"가 삭제되었습니다");			
+			} catch (CafeException e1) {
+				JOptionPane.showMessageDialog(CafeUI.this, e1.getMessage());
+			}
+		});
+		
+		
+		btn_prodUpdate.addActionListener(e->{
+			String prodCode = tf_prodCode.getText();
+			String prodName = tf_prodName.getText();
+			int price=Integer.parseInt(tf_prodPrice.getText());
+			ProductDTO p=new ProductDTO(prodCode, prodName, price);
+			try {
+				pService.updateProduct(p);
+				setProductList();
+				tf_prodCode.setText("");
+				tf_prodName.setText("");
+				tf_prodPrice.setText("");
+				JOptionPane.showMessageDialog(CafeUI.this, "상품 수정 완료");
+			} catch (CafeException e1) {
+				JOptionPane.showMessageDialog(CafeUI.this, e1.getMessage());
+			}		
+		});
+		
+		
+		btn_memDelete.addActionListener(new ActionListener() {
+			// 회원 삭제
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String memID = tf_memID.getText();
+				
+					try {
+						mService.deleteMember(memID);
+						JOptionPane.showMessageDialog(CafeUI.this, memID+"님이 삭제되었습니다");
+						tf_memID.setText("");
+						setMemberList();
+					} catch (CafeException e1) {
+						JOptionPane.showMessageDialog(CafeUI.this, e1.getMessage());
+					}	
 			}
 		});
 		
@@ -303,5 +351,28 @@ public class CafeUI extends Frame {
 				}				
 			}
 		});
-	}
+		
+		btn_memUpdate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// 회원 수정
+				String memID= tf_memID.getText();
+				String memName=tf_memName.getText();
+				String phone=tf_phone.getText();
+				MemberDTO m=new MemberDTO(memID,memName,phone);
+				
+				try {
+					mService.updateMember(m);
+					setMemberList();
+					tf_memID.setText("");
+					tf_memName.setText("");
+					tf_phone.setText("");
+					JOptionPane.showMessageDialog(CafeUI.this, memID+"님의 정보가 수정되었습니다");
+				} catch (CafeException e1) {
+					JOptionPane.showMessageDialog(CafeUI.this, e1.getMessage());
+				}				
+			}
+		});	
+}
 }

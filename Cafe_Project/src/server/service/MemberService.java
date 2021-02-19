@@ -24,4 +24,15 @@ public class MemberService {
 	public String selectMember (String memID) throws CafeException {
 		return mdao.selectMember(memID);
 	}
+	
+	public void deleteMember (String memID) throws CafeException {
+		mdao.deleteMember(memID);
+	}
+
+	public void updateMember(MemberDTO m) throws CafeException {
+		mdao.updateMember(m);
+		
+	}
+	
+	
 }

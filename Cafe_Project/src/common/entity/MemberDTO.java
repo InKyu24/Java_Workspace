@@ -14,6 +14,13 @@ public class MemberDTO {
 		// TODO Auto-generated constructor stub
 	}
 
+	public MemberDTO(String memID, String name, String phone) {
+		super();
+		setmemID(memID);
+		setName(name);
+		setPhone(phone);		
+	}
+	
 	public MemberDTO(String memID, String name, Date mDate, String phone) {
 		super();
 		setmemID(memID);

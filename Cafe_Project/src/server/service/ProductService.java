@@ -24,5 +24,13 @@ public class ProductService {
 	public String selectProduct(String prodCode) throws CafeException {
 		return pdao.selectProduct(prodCode);
 	}
+
+	public void updateProduct(ProductDTO p) throws CafeException {
+		pdao.updateProduct(p);
 		
+	}
+		
+	public void deleteProduct(ProductDTO p) throws CafeException {
+		pdao.deleteProduct(p);
+	}
 }
