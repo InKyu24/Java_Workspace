@@ -25,11 +25,13 @@ public class ProductDAO {
 		Connection con=null;
 		PreparedStatement stmt=null;
 		try {
-			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","CAFE","1313");
+			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
 			stmt = con.prepareStatement("insert into Product values (?,?,?)");
 			stmt.setString(1, p.getProdCode());
 			stmt.setString(2, p.getProdName());
-			stmt.setInt(3, p.getPrice());	
+			stmt.setInt(3, p.getPrice());
+			
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new CafeException("상품 등록 실패");
 		} finally {
@@ -46,7 +48,7 @@ public class ProductDAO {
 		Connection con=null;
 		PreparedStatement stmt=null;
 		try {
-			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","CAFE","1313");
+			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
 			stmt = con.prepareStatement("select * from product");
 			ResultSet rs = stmt.executeQuery();
 			ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
@@ -75,6 +77,33 @@ public class ProductDAO {
 	}
 	
 	public void deleteProduct() {
+		
+	}
+
+	public String selectProduct(String prodCode) throws CafeException {
+		Connection con=null;
+		PreparedStatement stmt=null;
+		try {
+			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","CAFE","1313");
+			stmt = con.prepareStatement("select prodName from product where prodCode=?");
+			stmt.setString(1, prodCode);
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString(1);
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			throw new CafeException("상품 조회 실패");
+		} finally {
+			try {
+				if (stmt != null) stmt.close();
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 }

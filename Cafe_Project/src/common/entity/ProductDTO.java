@@ -7,7 +7,6 @@ public class ProductDTO {
 	
 	public ProductDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public ProductDTO(String prodCode, String prodName, int price) {
@@ -42,6 +41,8 @@ public class ProductDTO {
 		return price;
 	}
 	public void setPrice(int price) {
-		this.price = price;
+		if (price >0) {
+			this.price = price;
+		}
 	}
 }

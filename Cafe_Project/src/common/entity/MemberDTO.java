@@ -3,7 +3,7 @@ package common.entity;
 import java.util.Date;
 
 public class MemberDTO {
-	private String memid;
+	private String memID;
 	private String name;
 	private Date mDate;
 	private String phone;
@@ -14,31 +14,31 @@ public class MemberDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberDTO(String memId, String name, Date mDate, String phone) {
+	public MemberDTO(String memID, String name, Date mDate, String phone) {
 		super();
-		setMemid(memId);
+		setmemID(memID);
 		setName(name);
 		setmDate(mDate);
 		setPhone(phone);		
 	}
 	
-	public MemberDTO(String memId, String name, Date mDate, String phone,int point) {
-		this(memId, name, mDate, phone);
-	// 	setMemid(memId);
+	public MemberDTO(String memID, String name, Date mDate, String phone,int point) {
+		this(memID, name, mDate, phone);
+	// 	setmemID(memID);
 	//	setName(name);
 	//	setmDate(mDate);
 	//	setPhone(phone);	
 		setPoint(point);
 	}
 		
-	public String getMemid() {
-		return memid;
+	public String getMemID() {
+		return memID;
 	}
-	public void setMemid(String memid) {		// 유효성 검사
-		if(memid!=null) {
-			this.memid = memid;	
+	public void setmemID(String memID) {		// 유효성 검사
+		if(memID!=null) {
+			this.memID = memID;	
 		}else {
-			System.out.println("memId는 null이 될 수 없습니다.");
+			System.out.println("memID는 null이 될 수 없습니다.");
 		}
 	}
 	public String getName() {
@@ -68,7 +68,7 @@ public class MemberDTO {
 
 	@Override
 	public String toString() {
-		return "Member [memid=" + memid + ", name=" + name + ", mDate=" + mDate + ", phone=" + phone + ", point="
+		return "Member [memID=" + memID + ", name=" + name + ", mDate=" + mDate + ", phone=" + phone + ", point="
 				+ point + "]";
 	}
 	

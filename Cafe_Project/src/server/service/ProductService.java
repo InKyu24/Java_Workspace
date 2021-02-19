@@ -20,5 +20,9 @@ public class ProductService {
 	public ArrayList<ProductDTO> selectProduct() throws CafeException {
 		return pdao.selectProduct();
 	}
+
+	public String selectProduct(String prodCode) throws CafeException {
+		return pdao.selectProduct(prodCode);
+	}
 		
 }

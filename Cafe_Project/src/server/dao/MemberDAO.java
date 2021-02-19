@@ -27,14 +27,13 @@ public class MemberDAO {
 		try {
 			con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313"); // 2
 			stmt = con.prepareStatement("Insert into member values (?,?,?,?,?) "); // 3
-			stmt.setString(1, m.getMemid());
+			stmt.setString(1, m.getMemID());
 			stmt.setString(2, m.getName());
 			stmt.setDate(3, new Date(m.getmDate().getTime()));
 			stmt.setString(4, m.getPhone());
 			stmt.setInt(5, m.getPoint());
+			stmt.executeUpdate();
 			
-			int i=stmt.executeUpdate();
-			System.out.println(i+"행이 insert되었습니다");
 		} catch (SQLException e) { 
 			throw new CafeException("회원 등록 실패");
 		} finally {
@@ -64,8 +63,7 @@ public class MemberDAO {
 				MemberDTO m = new MemberDTO(id, name, mDate, phone, point); 
 				list.add(m);
 			}
-			int i=stmt.executeUpdate();
-			System.out.println(i+"행이 조회되었습니다");
+			stmt.executeUpdate();
 			return list;
 		} catch (SQLException e) { 
 			throw new CafeException("회원 조회 실패");
@@ -78,7 +76,30 @@ public class MemberDAO {
 		}
 	} 
 	
-	//public void SelectMember
+	public String selectMember (String memID) throws CafeException {
+		Connection con = null;
+		PreparedStatement stmt = null;		
+		try {
+			con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313"); // 2
+			stmt = con.prepareStatement("Select * from member where memID = ?"); // 3
+			stmt.setString(1, memID);			
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString(1);
+			} else {
+				return null;
+			}
+		} catch (SQLException e) { 
+			throw new CafeException("회원 조회 실패");
+		} finally {
+			try {
+				if(stmt!=null) stmt.close();
+				if(con!=null) con.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
 	//public void deleteMember
 	//public void updateMember 
 }
