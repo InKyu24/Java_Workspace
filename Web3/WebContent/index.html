@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+		body {
+			background-image: url('img/a.jpg');
+		}
+	</style>
+</head>
+
+<body>
+	<form action="HelloServlet" method="get">
+		<h1> 회원가입</h1>
+		ID <Input type="text" name="id"> <br />
+		PW <input type="password" name="pw"> <br />
+		NAME <input type="text" name="name"> <br />
+		관심분야 :Java<input type="checkbox" name="lang" value="java">C<input type="checkbox" name="lang" value="c">Python<input type="checkbox" name="lang" value="python"> <br />
+		성별 : 남<input type="radio" name="gender" value="m">여<input type="radio" name="gender" value="f"> <br/>
+		등록 클래스: <select name="class">
+			<option value="a">A반</option>
+			<option value="b">B반</option>
+			</select> <br />
+		<input type="submit">
+	</form>
+	<a href="blog.html">블로그 이동</a>
+</body>
+</html>
