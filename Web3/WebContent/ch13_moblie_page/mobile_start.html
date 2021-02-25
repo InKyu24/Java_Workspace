@@ -2,9 +2,30 @@
 <html>
 <head>
     <title>HTML5 with Hanbit</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />    
+  	<!-- 반응형 웹 만들기 -->
+    <!-- 1. 모바일용 css -->
+    <!-- <link rel="stylesheet" href="./moblie.css" media="(max-width:600px)"> -->
+ 
+    <!-- 2. 데스크탑용 외부 스타일시트 적용 -->
+    <!-- <link rel="stylesheet" href="./desktop.css" media="(min-width:600px)"> -->
     
+    <!-- 초기화 하기 -->
+    <link rel="stylesheet" href="./init.css">
+    <!-- 공통 구성하기 -->
+    <link rel="stylesheet" href="./common.css">
+    <!-- 헤더 구성하기 -->
+    <link rel="stylesheet" href="./header.css">
+    <!-- 본문과 푸터 구성하기 -->
+    <link rel="stylesheet" href="./main_foot.css">
+
+	<!-- Bootstrap -->
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<script src="./my.js"></script>
 </head>
 <body>
     <div id="main-header">
@@ -12,18 +33,25 @@
             <div>
                 <label for="checkbox">▼</label>
                 <h1>Hanbit</h1>
+                <div id="loginDiv">
+                	ID <input size="8">
+                	PW <input size="8" type="password">
+                	<button class="btn btn-info">login</button>
+                	</div>
             </div>
             <input id="checkbox" checked="checked" type="checkbox" />
             <nav>
                 <ul>
-                    <li><a href="#">Brand<a></li>
-                    <li class="active"><a href="#">Network</a></li>
-                    <li><a href="#">Store</a></li>
+                    <li><a href="#" target="_blank" onClick="window.open('memberInsert.html','회원가입화면','resizable,height=700,width=370'); return false;">회원가입</a></li>
+                    <li><a href="#" id="network">Network</a></li>
+                    <li><a href="#" id="store">Store</a></li>
                     <li><a href="#">Support</a></li>
                 </ul>
             </nav>
         </header>
     </div>
+    
+   <div id="networkDiv"></div>
     <div id="main-content">
         <article class="container">
             <h1>Lorem ipsum</h1>
@@ -43,9 +71,10 @@
             <p>Nulla ipsum ante, viverra vitae elit non, laoreet sagittis ligula. Quisque tempor nisl augue, eu scelerisque tellus bibendum eu.</p>
         </article>
     </div>
+    
     <div id="main-footer">
         <footer class="container">
-            <div>©1991-2017 Example. All rights reserved.</div>
+            <div>©2021 made by InKyu24</div>
         </footer>
     </div>
 </body>
