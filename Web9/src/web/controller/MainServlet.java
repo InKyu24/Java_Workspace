@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sun.misc.Signal;
-
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
