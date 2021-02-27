@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- 모바일 설정  -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    
+    <title>Company</title>
+ 	
+    <!-- 반응형 웹 만들기 -->
+    <!-- 1. 모바일용 css -->
+    <link rel="stylesheet" href="./test1_2.css" media="(max-width:600px)">
+ 
+    <!-- 2. 데스크탑용 외부 스타일시트 적용 -->
+    <link rel="stylesheet" href="./test1_1.css" media="(min-width:600px)">
+    
+    <!-- 3. 외부 자바스크립트 -->	
+	<script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+	<script>
+    $(document).ready(function () {
+    	$('#banner1').click(function () {
+    		alert('비즈니스 사이트로 이동하시겠습니까?');
+    		$('#main').html('<h1>비즈니스 사이트</h1>');
+    	});
+    	$('#banner2').click(function () {
+    		alert('AI 기술 사이트로 이동하시겠습니까?');
+    		$('#main').html('<h1>AI 기술 사이트</h1>');
+    	});
+    		
+    });
+	</script>
+</head>
+<body>
+    
+    <div id="page">
+ 
+        <header>
+            <div id="logo">
+                <img src="./imgs_company/logo.png" alt="Logo">
+            </div>
+ 
+            <div id="top_menu">
+                <a href="#">HOME</a> | 
+                <a href="#">NOTICE</a> |
+                <a href="#">LOGIN</a> |
+                <a href="#">JOIN</a>
+            </div>
+ 
+            <nav>
+                <ul>
+                    <li><a href="#">COMPANY</a></li>
+                    <li><a href="#">PRODUCT</a></li>
+                    <li><a href="#">CUSTOMER</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <li><a href="#">RECRUIT</a></li>
+                </ul>
+            </nav>
+ 
+        </header>
+ 
+        <article id="content">
+            <section id="main">
+                <img src="./imgs_company/main_img.png" alt="main img" >
+            </section>
+            <section>
+                <ul id="banner">
+                    <li><a href="#" id='banner1'><img src="./imgs_company/banner1.png" alt="banner1"></a></li>
+                    <li><a href="#" id='banner2'><img src="./imgs_company/banner2.png" alt="banner2"></a></li>
+                </ul>
+ 
+            </section>
+ 
+        </article>
+ 
+        <footer>
+            <img src="./imgs_company/address.png" alt="address">
+        </footer>
+ 
+    </div>
+</body>
+</html>
