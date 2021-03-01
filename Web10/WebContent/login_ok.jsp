@@ -22,9 +22,9 @@
 </style>
 </head>
 <body>
-	${id }님 로그인 성공!
-	<br><br>
-	<button class="close" onClick="window.close()">닫기</button>
+	<p>${id }님 로그인 성공!</p>
+	<br>
+	<button onClick="window.close()">닫기</button>
 
 </body>
 </html>

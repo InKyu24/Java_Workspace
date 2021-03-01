@@ -21,8 +21,8 @@
 </style>
 </head>
 <body>
-	${name }님 회원가입 완료!
-	<br><br>
-	<button class="close" onclick="window.close()">닫기</button>
+	<p>${name }님 회원가입 완료!</p>
+	<br>
+	<button onClick="window.close()">닫기</button>
 </body> 
 </html>
