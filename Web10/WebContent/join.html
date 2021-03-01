@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>회원가입</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   	 
+		
+		<script>
+      		function check() {
+      			var name = document.getElementById('inputName').value;
+       	  		var pw1 = document.getElementById('inputPassword').value;
+            	var pw2 = document.getElementById('inputPasswordCheck').value;
+            	var check = document.getElementById('agree').value;
+            	if (name == "") {
+            		alert ("이름을 입력해주세요");
+            		alert (email)
+            		return false;
+            	} else if (pw1 == "" || pw2 == "") {
+            		alert ("비밀번호를 입력해주세요");
+            		return false;
+            	} else if (pw1 != pw2) {
+            		alert ("비밀번호가 서로 일치하지 않습니다")
+            	} else if (check != "on") {
+            		alert ("이용약관에 동의해주세요")
+            	}
+          	}      		
+    	</script>
+    </head>
+    
+    <body>
+        <article class="container">
+            <div class="page-header">
+                <div class="col-md-6 col-md-offset-3">
+                <h3>회원가입</h3>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-offset-3">
+                <form role="form" action="main" method="post">
+                	<input type="hidden" name="sign" value="join">
+                    <div class="form-group">
+                        <label for="inputName">성명</label>
+                        <input name="name" type="text" class="form-control" id="inputName" placeholder="이름을 입력해 주세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputEmail">이메일 주소</label>
+                        <input name="email" type="email" class="form-control" id="inputEmail" placeholder="이메일 주소를 입력해주세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">비밀번호</label>
+                        <input name="pw" type="password" class="form-control" id="inputPassword" placeholder="비밀번호를 입력해주세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPasswordCheck">비밀번호 확인</label>
+                        <input name="pw2" type="password" class="form-control" id="inputPasswordCheck" placeholder="비밀번호 확인을 위해 다시 한번 입력해주세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMobile">휴대폰 번호</label>
+                        <input name="mobile" type="tel" class="form-control" id="inputMobile" placeholder="휴대폰 번호를 입력해 주세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputtelNO">사무실 번호</label>
+                        <input name="tel" type="tel" class="form-control" id="inputtelNO" placeholder="사무실 번호를 입력해 주세요">
+                    </div>
+
+                    <div class="form-group">
+                    <label>약관 동의</label>
+                    <div data-toggle="buttons">
+                    <label>
+                    <span class="fa fa-check"></span>
+                    <input name="agree" id="agree" type="checkbox" autocomplete="off" checked>
+                    </label>
+                    <a href="#">이용약관</a>에 동의합니다.
+                    </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" id="join-submit" class="btn btn-primary" onClick="return check()">
+                           	 회원가입<i class="fa fa-check spaceLeft"></i>
+                        </button>
+                        <button type="submit" class="btn btn-warning">
+                          	  가입취소<i class="fa fa-times spaceLeft"></i>
+                        </button>             			
+                    </div>
+                </form>
+            </div>
+
+        </article>
+    </body>
+</html>
+
