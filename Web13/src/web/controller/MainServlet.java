@@ -30,7 +30,17 @@ public class MainServlet extends HttpServlet {
 			String pw = request.getParameter("pw");
 			PrintWriter out = response.getWriter();
 			out.write(id+":"+pw);
-		} 
+		} else if (sign.equals("memberInsert")) {
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			String name = request.getParameter("name");
+			String [] all_subject = request.getParameterValues("subject");
+			PrintWriter out = response.getWriter();
+			out.write(id+":"+pw+":"+name+"<br>");
+			for(String s:all_subject) {
+				out.write(s+" &nbsp; ");
+			}
+		}
 		
 	}
 }
