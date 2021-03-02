@@ -46,6 +46,7 @@ public class MainServlet extends HttpServlet {
 			while(totalNames.hasMoreElements()) {
 				String name = (String) totalNames.nextElement();
 				String []values = request.getParameterValues(name);
+				response.setContentType("text/html;charset=utf-8");
 				PrintWriter out = response.getWriter();
 				for(String value:values) {
 					out.append(name+":"+value+"<br>");
