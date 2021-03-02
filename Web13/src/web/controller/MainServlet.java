@@ -2,6 +2,7 @@ package web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,6 +40,17 @@ public class MainServlet extends HttpServlet {
 			out.write(id+":"+pw+":"+name+"<br>");
 			for(String s:all_subject) {
 				out.write(s+" &nbsp; ");
+			}
+		} else if (sign.equals ("memberInsert2")) {
+			Enumeration totalNames = request.getParameterNames();
+			while(totalNames.hasMoreElements()) {
+				String name = (String) totalNames.nextElement();
+				String []values = request.getParameterValues(name);
+				PrintWriter out = response.getWriter();
+				for(String value:values) {
+					out.append(name+":"+value+"<br>");
+				}
+				
 			}
 		}
 		
