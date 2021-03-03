@@ -3,6 +3,7 @@ package web.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,9 +47,21 @@ public class MainServlet extends HttpServlet {
 		} else if (sign.equals("login")) {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
+			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.write(id+":"+pw);
-		}else if(sign.equals("memberInsert")) {
+			try {
+				String name = mDao.login(id, pw);
+				if (name != null) {
+					out.write(name+"님 환영합니다");
+				} else {
+					out.write("로그인이 안되었습니다 <br> <a href='login.html'>다시 로그인하기</a> <br> <a href='login.html'>회원가입 하기</a>");
+				}
+			} catch (MyException e) {
+				out.write(e.getMessage());
+			}
+			
+			
+		} else if (sign.equals("memberInsert")) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out=response.getWriter();
 			
@@ -60,13 +73,27 @@ public class MainServlet extends HttpServlet {
 				
 			}
 			
-			MemberVO m=new MemberVO(id,name);
+			MemberVO m=new MemberVO(id, pw, name, all_subject);
 			try {
 				mDao.memberInsert(m);
-				out.write("회원가입 되셨습니다");
+				out.write("회원가입 되셨습니다 <br> <a href='login.html'>지금 로그인 하기</a> <br> <a href='index.html'>홈으로 가기</a>");
 			} catch (MyException e) {
 				out.write(e.getMessage());
 			}			
+		} else if (sign.equals("listMembers")) {			
+			try {
+				List<MemberVO> list = mDao.listMember();
+				response.setContentType("text/html;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				for (MemberVO m:list) {
+					out.append(m.getId() + ":" + m.getPw() + ":" + m.getName() + "<br>");
+				}
+					out.append("<a href='index.html'>홈으로 가기</a>");
+			} catch (MyException e) {
+				e.printStackTrace();
+				
+			}
+			
 		}
 	}
 }

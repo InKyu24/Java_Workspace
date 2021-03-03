@@ -1,13 +1,25 @@
 package web.util;
 
 public class MemberVO {
-	private String id, name;
+	private String id, name, pw;
+	public String[] all_subject;
 
-	public MemberVO(String id, String name) {
+	public MemberVO(String id, String pw, String name) {
 		super();
 		setId(id);
 		setName(name);
+		setPw(pw);
 		
+	}
+
+	public MemberVO(String id2, String name2, String pw2, String[] all_subject) {
+		this(id2, name2, pw2);
+		this.all_subject = all_subject;
+		
+	}
+
+	public String[] getAll_subject() {
+		return all_subject;
 	}
 
 	public String getId() {
@@ -34,5 +46,17 @@ public class MemberVO {
 		}
 	}
 	
+	public String getPw() {
+		return pw;
+	}
+	
+	public void setPw(String pw) {
+		if (pw != null) {
+			this.pw = pw;
+		} else {
+			System.out.println("PW == null");
+		}
+	}
+
 	
 }
