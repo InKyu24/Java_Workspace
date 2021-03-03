@@ -14,15 +14,15 @@
 			alert ("아이디, 비밀번호 그리고 이름 입력은 필수입니다.");	
 		} else {
 			form.method = "get";
-			form.method = "main";
+			form.action = "main";
 			form.submit();	
 		}		
 	}
 </script>
 </head>
 <body>
-	<form name="frm_join" action='main' method="get">
-		<input type="hidden" name="sign" value="memberInsert2">
+	<form name="frm_join">
+		<input type="hidden" name="sign" value="memberInsert">
 		ID <input name="id"> <br>
 		PW <input name="pw" type="password"> <br>
 		NAME <input name="name"><br>

@@ -3,6 +3,13 @@ package web.util;
 public class MemberVO {
 	private String id, name;
 
+	public MemberVO(String id, String name) {
+		super();
+		setId(id);
+		setName(name);
+		
+	}
+
 	public String getId() {
 		return id;
 	}
