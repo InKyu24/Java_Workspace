@@ -85,15 +85,33 @@ public class MainServlet extends HttpServlet {
 				List<MemberVO> list = mDao.listMember();
 				response.setContentType("text/html;charset=utf-8");
 				PrintWriter out = response.getWriter();
+				out.append("<form action='main'>");
+				out.append("<input type='hidden' name='sign' value='memberDelete'>");
+				out.append("<input name='id'><input type='submit' value='회원 삭제'></form>");
+				out.append("<table border='1'>");
+				out.append("<tr><th>id</th><th>pw</th><th>name</th>");
 				for (MemberVO m:list) {
-					out.append(m.getId() + ":" + m.getPw() + ":" + m.getName() + "<br>");
+					out.append("<tr><td>"+m.getId() + "</td><td>" + m.getPw() + "</td><td>" + m.getName() + "</td></tr>");
 				}
+					out.append("</table>");
 					out.append("<a href='index.html'>홈으로 가기</a>");
 			} catch (MyException e) {
 				e.printStackTrace();
 				
-			}
+			} 
+		} else if (sign.equals("memberDelete")) {
+			String id = request.getParameter("id");
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
 			
+			try {
+				mDao.memberDelete(id);
+				out.append(id +"님이 삭제되었습니다. <br> <a href='memberInsert.html'>지금 회원가입 하기</a> <br> <a href='index.html'>홈으로 가기</a>");
+			} catch (MyException e) {
+				out.append(e.getMessage());
+			}
+		
 		}
 	}
+	
 }
