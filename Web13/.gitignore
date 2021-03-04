@@ -1,1 +1,9 @@
-/build/
+
+# Eclipse #
+/.recommenders/
+/Servers/
+.project
+.metadata
+.classpath
+.settings/
+.loadpath

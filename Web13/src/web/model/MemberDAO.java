@@ -8,18 +8,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import web.util.MemberVO;
 import web.util.MyException;
 
 public class MemberDAO {
-
-	// 1. 드라이버 등록
+	
+	DataSource dataFactory;
+	
 	public MemberDAO() throws MyException {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		} catch (ClassNotFoundException e) {
+			Context ctx = new InitialContext();
+			Context envContext = (Context) ctx.lookup("java:comp/env");
+			dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+		} catch (NamingException e) {
 			e.printStackTrace();
-			throw new MyException("드라이버 등록 실패");
+			throw new MyException("자원 찾기 오류");
 		}
 	}
 
@@ -28,7 +36,7 @@ public class MemberDAO {
 		PreparedStatement stmt = null;
 		try {
 			// 2. Connection
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
+			con = dataFactory.getConnection();
 			// 3. Statement
 			stmt = con.prepareStatement("Insert into member(MEMID, MEMNAME, SUBJECT, PW) values (?,?,?,?)");
 			
@@ -67,7 +75,7 @@ public class MemberDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
+			con = dataFactory.getConnection();
 			stmt = con.prepareStatement("select * from member");
 			rs = stmt.executeQuery();
 			while(rs.next()) {
@@ -96,7 +104,7 @@ public class MemberDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CAFE", "1313");
+			con = dataFactory.getConnection();
 			stmt = con.prepareStatement("select * from member where memid=? and pw=?");
 			stmt.setString(1, id);
 			stmt.setString(2, pw);
