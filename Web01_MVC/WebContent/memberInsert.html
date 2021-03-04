@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function fn_validate() {
+		var form = document.frm_join;
+		var user_id = form.id.value;
+		var user_pw = form.pw.value;
+		var user_name = form.name.value;
+		
+		if ((user_id.length == 0 || user_id == "")||(user_pw.length == 0 || user_pw == "")||(user_name.length == 0 || user_name == "")) {
+			alert ("아이디, 비밀번호 그리고 이름 입력은 필수입니다.");	
+		} else {
+			form.method = "get";
+			form.action = "main";
+			form.submit();	
+		}		
+	}
+</script>
+</head>
+<body>
+	<form name="frm_join">
+		<input type="hidden" name="key" value="memberInsert">
+		ID <input name="id"> <br>
+		PW <input name="pw" type="password"> <br>
+		NAME <input name="name"><br>
+		<input type="button" onClick="fn_validate()" value="회원가입">
+	</form>
+</body>
+</html>
