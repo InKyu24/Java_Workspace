@@ -8,7 +8,7 @@
 </head>
 <body>
 <%	
-	String name = "guest";
+	/* String name = "guest";
 	Cookie []all = request.getCookies();
 	if(all != null) {
 		for(Cookie c:all) {
@@ -16,7 +16,19 @@
 				name = c.getValue();
 			}
 		}	
+	}*/
+	
+	String name;
+	name = (String) session.getAttribute("login_name");
+	if (name == null) {
+		name="guest";
 	}
+	
+	
+	
+	
+	
+	
 %>
 	<%= name %>님 빚져서라도 구매하세요
 <hr>

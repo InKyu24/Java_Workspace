@@ -10,6 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import web.model.MemberDAO;
 import web.util.Member;
@@ -41,9 +42,13 @@ public class MainServlet extends HttpServlet {
 				String name = mDao.login(id,pw);
 				if (name != null) {
 					// 쿠키 설정
-					Cookie c = new Cookie("login_name", name);
-					response.addCookie(c);
+//					Cookie c = new Cookie("login_name", name);
+//					c.setMaxAge(60*60);
+//					response.addCookie(c);
 					
+					// 세션 설정
+					HttpSession session = request.getSession(); 
+					session.setAttribute("login_name", name);
 					
 					RequestDispatcher disp = request.getRequestDispatcher("login_ok.jsp");
 					request.setAttribute("name", name);
