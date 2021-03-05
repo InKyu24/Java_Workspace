@@ -9,7 +9,7 @@
 <body>
 <input type='hidden' name='sign' value='memberDelete'>
 <input name='id'><input type='submit' value='회원 삭제'></form>
-
+<br><br>
 	회원가입 되셨습니다. <br>
 	<a href='index.html'> 홈으로 </a>
 	
