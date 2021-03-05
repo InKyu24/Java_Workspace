@@ -1,6 +1,7 @@
 package web.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -76,6 +77,50 @@ public class MainServlet extends HttpServlet {
 				RequestDispatcher disp = request.getRequestDispatcher("memberDelete_ok.jsp");
 				request.setAttribute("id", id);
 				disp.forward(request, response);
+				
+				
+			} else if (key.equals("basketInsert")) { // 장바구니 처리 
+				HttpSession session = request.getSession(false);
+				if (session == null) {
+					RequestDispatcher disp=request.getRequestDispatcher("login.jsp");
+					disp.forward(request, response);
+				} else {
+					String name = (String) session.getAttribute("login_name");
+					if (name == null) {
+					RequestDispatcher disp=request.getRequestDispatcher("login.jsp");
+					disp.forward(request, response);
+					} else {
+						// session도 name도 있는 로그인 정상 상태
+						String product = request.getParameter("product");
+						ArrayList<String> list = (ArrayList<String>) session.getAttribute("basket");
+						if (list == null) {
+							list = new ArrayList<String>();
+							session.setAttribute("basket", list); // 최초 장바구니 세팅
+						}
+						list.add(product);
+						RequestDispatcher disp=request.getRequestDispatcher("basketInsert_ok.jsp");
+						disp.forward(request, response);
+					}
+				}					
+			} else if (key.equals("basketView")) {
+				HttpSession session = request.getSession(false);
+				if (session == null) {
+					RequestDispatcher disp=request.getRequestDispatcher("login.jsp");
+					disp.forward(request, response);
+				} else {
+					String name = (String) session.getAttribute("login_name");
+					if (name == null) {
+					RequestDispatcher disp=request.getRequestDispatcher("login.jsp");
+					disp.forward(request, response);
+					} else {
+						// session도 name도 있는 로그인 정상 상태
+						String product=request.getParameter("product");
+						
+						ArrayList<String> list = (ArrayList<String>) session.getAttribute("basket");
+						RequestDispatcher disp=request.getRequestDispatcher("basketView.jsp");
+						disp.forward(request, response);
+					}
+				}					
 			}
 			
 		}catch(MyException e) {
