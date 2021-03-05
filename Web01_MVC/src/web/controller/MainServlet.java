@@ -51,7 +51,7 @@ public class MainServlet extends HttpServlet {
 				RequestDispatcher disp = request.getRequestDispatcher("memberList_ok.jsp");
 				request.setAttribute("list", list);
 				disp.forward(request, response);	
-			} else if (key.equalsIgnoreCase("memberInsert")) {
+			} else if (key.equals("memberInsert")) {
 				String id=request.getParameter("id");
 				String pw=request.getParameter("pw");
 				String name=request.getParameter("name");
@@ -59,7 +59,14 @@ public class MainServlet extends HttpServlet {
 				mDao.memberInsert(m);
 				RequestDispatcher disp=request.getRequestDispatcher("memberInsert_ok.jsp");
 				disp.forward(request, response);
+			} else if (key.equals("memberDelete")) {
+				String id=request.getParameter("id");
+				mDao.memberDelete(id);
+				RequestDispatcher disp = request.getRequestDispatcher("memberDelete_ok.jsp");
+				request.setAttribute("id", id);
+				disp.forward(request, response);
 			}
+			
 		}catch(MyException e) {
 		}
 	}

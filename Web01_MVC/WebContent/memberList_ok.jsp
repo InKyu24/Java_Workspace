@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<form action='main'>
+<input type='hidden' name='key' value='memberDelete'>
+<input name='id'>
+<input type='submit' value="회원 삭제"> </form>
+
 	<table border='1' width='300'>
 	<tr><th>id</th> <th>pw</th> <th>name</th> </tr>
 	<%
@@ -17,5 +23,6 @@
 	%>
 	
 	</table>
+	<a href='index.html'>홈으로 가기</a>
 </body>
 </html>
