@@ -34,12 +34,12 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			con = dbcp.getConnection();
-			stmt = con.prepareStatement("select MEMNAME for MEMBER where ID = ? and PW = ?");
+			stmt = con.prepareStatement("select MEMNAME from MEMBER where MEMID = ? and PW = ?");
 			stmt.setString(1, id);
 			stmt.setString(2, pw);			
 			rs = stmt.executeQuery();
 			if (rs.next()) {
-				String name = rs.getString("name");
+				String name = rs.getString("memname");
 				return name;
 			} return null;
 		} catch (SQLException e) {

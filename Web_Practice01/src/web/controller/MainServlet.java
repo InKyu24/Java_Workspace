@@ -17,6 +17,16 @@ import web.util.Myexception;
 public class MainServlet extends HttpServlet {
 	MemberDAO mDao;
 	
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		 try {
+			mDao=new MemberDAO();
+		} catch (Myexception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	protected void process (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		// request로 들어오는 텍스트 인코딩 세팅
@@ -25,18 +35,20 @@ public class MainServlet extends HttpServlet {
 		String sign = request.getParameter("signal");
 		
 			if (sign == null) {
-				System.out.println("sign == null");
+				throw new Myexception("요청을 구별할 수 없음");
 			} else if (sign.equals("login")) {
-				String id = request.getParameter("ID");
-				String pw = request.getParameter("PW");
+				String id = request.getParameter("id");
+				String pw = request.getParameter("pw");
 				String name = mDao.login(id, pw);
-				
-				RequestDispatcher disp = request.getRequestDispatcher("login_ok.jsp");
-				// 아래 코드인 disp.forward(request, response);의 의미 파악하기!
-				disp.forward(request, response);
-			} else {
-				RequestDispatcher disp = request.getRequestDispatcher("login_fail.jsp");
-				disp.forward(request, response);
+				if (name != null) {
+					RequestDispatcher disp = request.getRequestDispatcher("login_ok.jsp");
+					// 아래 코드인 disp.forward(request, response);의 의미 파악하기!
+					request.setAttribute("name", name);
+					disp.forward(request, response);
+				} else {
+					RequestDispatcher disp = request.getRequestDispatcher("login_fail.jsp");
+					disp.forward(request, response);
+				}
 			}
 			
 		} catch (Myexception e) {

@@ -1,7 +1,7 @@
 package web.model;
 
 public class MemberVO {
-	String id,pw,name;
+	private String id,pw,name;
 
 	
 	public MemberVO(String id, String pw, String name) {
