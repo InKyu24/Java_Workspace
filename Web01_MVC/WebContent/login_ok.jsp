@@ -3,8 +3,11 @@
  <%@ include file="header.html" %>
 <body>
 
+
 ${name } 님 로그인 성공! <br>
-<a href='index.html'>홈으로 이동</a> <br> 
+
+
+<a href='shop.jsp'>쇼핑몰로 이동</a> <br> 
 	<jsp:include page='img.html'></jsp:include>
 	<br>
 	<%!
