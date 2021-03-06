@@ -100,7 +100,7 @@ public class MemberDAO {
 			} return list;
 		} catch (SQLException e) {
 			// e.printStackTrace();
-			throw new Myexception("로그인 실패");
+			throw new Myexception("회원 조회 실패");
 		} finally {
 			try {
 				if (rs != null) {rs.close();}
@@ -109,6 +109,28 @@ public class MemberDAO {
 			} catch (SQLException e) {
 			}
 		}
-	}//END MEMBERLIST
+	}//END LIST()
+
+	public int memberDelete(String id) throws Myexception {
+		Connection con = null;
+		PreparedStatement stmt = null;;
+		try {
+			con = dbcp.getConnection();
+			stmt = con.prepareStatement("Delete from Member where memid=?");
+			stmt.setString(1, id);
+			int i = stmt.executeUpdate();
+			System.out.println(i +"행 딜리트");
+			return i;
+		} catch (SQLException e) {
+			// e.printStackTrace();
+			throw new Myexception("회원 삭제 실패");
+		} finally {
+			try {
+				if (stmt != null) {stmt.close();}
+				if (con != null) {con.close();}
+			} catch (SQLException e) {
+			}
+		}
+	}//END DELETE(id, pw)
 	
 }//END CLASS

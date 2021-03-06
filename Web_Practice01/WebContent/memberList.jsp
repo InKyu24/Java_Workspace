@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>모든 회원 조회를 완료하였습니다.</h1>
 <table border="1">
 <tr>
 <b><th>번호</th><th>아이디</th><th>비밀번호</th><th>이름</th></b>
@@ -21,5 +21,14 @@ for (MemberVO m: memberList) {
 };
 %>
 </table>
+<hr>
+
+<form>
+<h2> 회원 삭제 </h2>
+<input type="hidden" name="signal" value="memberDelete">
+ID <input name="id"> <br>
+<input type="submit" value="Delete">
+</form>
+
 </body>
 </html>

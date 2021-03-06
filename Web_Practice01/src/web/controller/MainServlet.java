@@ -67,6 +67,17 @@ public class MainServlet extends HttpServlet {
 				
 				RequestDispatcher disp = request.getRequestDispatcher("memberList.jsp");
 				disp.forward(request, response);
+				
+			} else if (sign.equals("memberDelete")) {
+				String id = request.getParameter("id");
+				int delete = mDao.memberDelete(id);
+				if (delete == 1) {
+					RequestDispatcher disp = request.getRequestDispatcher("memberDelete_ok.jsp");
+					disp.forward(request, response);
+				} else {
+					RequestDispatcher disp = request.getRequestDispatcher("memberDelete_fail.jsp");
+					disp.forward(request, response);
+				}
 			}
 			
 		} catch (Myexception e) {
