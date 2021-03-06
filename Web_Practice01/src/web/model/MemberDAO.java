@@ -10,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import web.util.MemberVO;
 import web.util.Myexception;
 
 public class MemberDAO {

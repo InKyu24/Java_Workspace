@@ -1,4 +1,4 @@
-package web.model;
+package web.util;
 
 public class MemberVO {
 	private String id,pw,name;

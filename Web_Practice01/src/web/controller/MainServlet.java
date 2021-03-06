@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import web.model.MemberDAO;
-import web.model.MemberVO;
+import web.util.MemberVO;
 import web.util.Myexception;
 
 
