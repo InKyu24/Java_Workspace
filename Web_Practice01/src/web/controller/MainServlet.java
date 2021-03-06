@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import web.model.MemberDAO;
+import web.model.MemberVO;
 import web.util.Myexception;
 
 
@@ -49,7 +50,17 @@ public class MainServlet extends HttpServlet {
 					RequestDispatcher disp = request.getRequestDispatcher("login_fail.jsp");
 					disp.forward(request, response);
 				}
-			}
+			} else if (sign.equals("memberInsert")) {
+				String id = request.getParameter("id");
+				String pw = request.getParameter("pw");
+				String name = request.getParameter("name");
+
+				RequestDispatcher disp = request.getRequestDispatcher("memberInsert_ok.jsp");
+				disp.forward(request, response);
+				MemberVO mVo = new MemberVO(id, pw, name);
+				mDao.memberInsert(mVo);
+					
+			} 
 			
 		} catch (Myexception e) {
 				

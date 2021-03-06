@@ -54,6 +54,30 @@ public class MemberDAO {
 			}
 		}
 	}//END login(id, pw)
+
+	public void memberInsert(MemberVO mVo) throws Myexception {
+		Connection con = null;
+		PreparedStatement stmt = null;;
+
+		try {
+			con = dbcp.getConnection();
+			stmt = con.prepareStatement("insert into member (memid, memname, pw) values (?,?,?)");
+			stmt.setString(1, mVo.getId());
+			stmt.setString(2, mVo.getName());
+			stmt.setString(3, mVo.getPw());
+			int i = stmt.executeUpdate();
+			System.out.println(i+"행 업데이트");
+		} catch (SQLException e) {
+			// e.printStackTrace();
+			throw new Myexception("회원 가입 실패");
+		} finally {
+			try {
+				if (stmt != null) {stmt.close();}
+				if (con != null) {con.close();}
+			} catch (SQLException e) {
+			}
+		}
+	}
 	
 	
 }//END CLASS
