@@ -52,7 +52,7 @@ public class MainServlet extends HttpServlet {
 				}
 			} else if (sign.equals("memberInsert")) {
 				String id = request.getParameter("id");
-				String pw = request.getParameter("pw");
+				String pw = request.getParameter("password");
 				String name = request.getParameter("name");
 
 				RequestDispatcher disp = request.getRequestDispatcher("memberInsert_ok.jsp");
