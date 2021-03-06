@@ -1,6 +1,7 @@
 package web.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,7 +61,13 @@ public class MainServlet extends HttpServlet {
 				MemberVO mVo = new MemberVO(id, pw, name);
 				mDao.memberInsert(mVo);
 					
-			} 
+			} else if (sign.equals("memberList")) {
+				List<MemberVO> list = mDao.memberList();
+				request.setAttribute("list", list);
+				
+				RequestDispatcher disp = request.getRequestDispatcher("memberList.jsp");
+				disp.forward(request, response);
+			}
 			
 		} catch (Myexception e) {
 				

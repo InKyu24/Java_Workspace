@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -78,7 +80,35 @@ public class MemberDAO {
 			} catch (SQLException e) {
 			}
 		}
-	}
-	
+	}//END INSERT(mVo)
+
+	public List<MemberVO> memberList() throws Myexception {
+		List<MemberVO> list = new ArrayList <MemberVO> ();
+		Connection con = null;
+		PreparedStatement stmt = null;;
+		ResultSet rs = null;
+		try {
+			con = dbcp.getConnection();
+			stmt = con.prepareStatement("select * from MEMBER");	
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				String id = rs.getString("memid");
+				String pw = rs.getString("pw");
+				String name = rs.getString("memname");
+				MemberVO m = new MemberVO(id, pw, name);
+				list.add(m);
+			} return list;
+		} catch (SQLException e) {
+			// e.printStackTrace();
+			throw new Myexception("로그인 실패");
+		} finally {
+			try {
+				if (rs != null) {rs.close();}
+				if (stmt != null) {stmt.close();}
+				if (con != null) {con.close();}
+			} catch (SQLException e) {
+			}
+		}
+	}//END MEMBERLIST
 	
 }//END CLASS
