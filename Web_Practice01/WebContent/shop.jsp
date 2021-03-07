@@ -32,5 +32,15 @@
 	<br>
 	<input type="submit" value="장바구니에 담기">
 	</form>
+	
+	<form action="main">
+	<input type="hidden" name="signal" value="basketView">
+	<input type="submit" value="장바구니 보기">
+	</form>
+	
+	<form action="main" method="get">
+	<input type="hidden" name="signal" value="logout">
+	<input type="submit" value="로그아웃">
+	
 </body>
 </html>

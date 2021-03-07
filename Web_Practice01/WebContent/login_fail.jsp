@@ -8,5 +8,6 @@
 </head>
 <body>
 로그인 실패
+<a href='login_index.jsp'>홈으로 이동</a> <br>
 </body>
 </html>

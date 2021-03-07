@@ -108,7 +108,17 @@ public class MainServlet extends HttpServlet {
 						disp.forward(request, response);
 					}
 				}
-			} 	
+			} else if (sign.equals("basketView")) {
+				HttpSession session=request.getSession();
+				ArrayList<String> list=(ArrayList<String>)session.getAttribute("basket");
+				if(list==null) {				
+					RequestDispatcher disp=request.getRequestDispatcher("basketEmpty.jsp");
+					disp.forward(request, response);
+				} else {
+					RequestDispatcher disp=request.getRequestDispatcher("basketView.jsp");
+					disp.forward(request, response);
+				}
+			}
 			
 		} catch (Myexception e) {
 				
