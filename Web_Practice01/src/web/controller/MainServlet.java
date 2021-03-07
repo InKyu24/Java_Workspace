@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import web.model.MemberDAO;
 import web.util.MemberVO;
@@ -43,10 +44,14 @@ public class MainServlet extends HttpServlet {
 				String pw = request.getParameter("pw");
 				String name = mDao.login(id, pw);
 				if (name != null) {
+					HttpSession session=request.getSession();
+					session.setAttribute("id", id);
+					session.setAttribute("name", name);
+					System.out.println(id+"의 세션ID: \t"+session.getId());
+					
 					RequestDispatcher disp = request.getRequestDispatcher("login_ok.jsp");
 					// 아래 코드인 disp.forward(request, response);의 의미 파악하기!
-					request.setAttribute("name", name);
-					disp.forward(request, response);
+					disp.forward(request, response);			
 				} else {
 					RequestDispatcher disp = request.getRequestDispatcher("login_fail.jsp");
 					disp.forward(request, response);
@@ -56,10 +61,10 @@ public class MainServlet extends HttpServlet {
 				String pw = request.getParameter("password");
 				String name = request.getParameter("name");
 
-				RequestDispatcher disp = request.getRequestDispatcher("memberInsert_ok.jsp");
-				disp.forward(request, response);
 				MemberVO mVo = new MemberVO(id, pw, name);
 				mDao.memberInsert(mVo);
+				RequestDispatcher disp = request.getRequestDispatcher("memberInsert_ok.jsp");
+				disp.forward(request, response);
 					
 			} else if (sign.equals("memberList")) {
 				List<MemberVO> list = mDao.memberList();
@@ -77,6 +82,14 @@ public class MainServlet extends HttpServlet {
 				} else {
 					RequestDispatcher disp = request.getRequestDispatcher("memberDelete_fail.jsp");
 					disp.forward(request, response);
+				}
+				
+			} else if (sign.equals("logout")) {
+				HttpSession session = request.getSession(false);
+				if (session != null) {
+				session.invalidate();
+				RequestDispatcher disp=request.getRequestDispatcher("index.html");
+				disp.forward(request, response);
 				}
 			}
 			
