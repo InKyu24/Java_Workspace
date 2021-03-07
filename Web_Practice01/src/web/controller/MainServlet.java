@@ -1,6 +1,7 @@
 package web.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -91,7 +92,23 @@ public class MainServlet extends HttpServlet {
 				RequestDispatcher disp=request.getRequestDispatcher("index.html");
 				disp.forward(request, response);
 				}
-			}
+			} else if (sign.equals("basketInsert")) {
+				HttpSession session=request.getSession();
+				ArrayList<String> list=(ArrayList<String>)session.getAttribute("basket");
+				if(list==null) {
+					list=new ArrayList<String>();
+					session.setAttribute("basket", list);
+					RequestDispatcher disp=request.getRequestDispatcher("basketEmpty.jsp");
+					disp.forward(request, response);
+				} else {
+					String product=request.getParameter("product");
+					if (product != null) {
+						list.add(product);
+						RequestDispatcher disp=request.getRequestDispatcher("basket_ok.jsp");
+						disp.forward(request, response);
+					}
+				}
+			} 	
 			
 		} catch (Myexception e) {
 				
