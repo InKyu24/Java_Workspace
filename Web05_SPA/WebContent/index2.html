@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script scr="index.js"> </script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#memInsertForm").click(function () {
+			var v="id <input id='id'> <br> pw <input type='password' id='pw'> <br> name <input id='name'> <br> <input type='button' value='회원가입' id='memberInsertBtn'>"
+			$("#mainDiv").html(v);
+		});
+		
+		$("#loginBtn").click(function () {
+			$.post("main",
+			JSON.stringify({
+					sign: "login",
+					id:$("#id").val(),
+					pw:$("#pw").val()
+			}),function(msg,status){
+					var obj = JSON.parse (msg);
+					if (obj.msg != null) {
+						alert(obj.msg);
+					} else {
+						if (obj.name != null) {
+							$("#loginDiv").html(obj.name+"님 환영합니다");
+							$("#mainDiv").html("<h1>즐거운 쇼핑 되세요</h1>");
+						} else {
+							alert("재로그인이 필요하다")
+						}
+					}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+  <table border="1" width="600" height="500">
+    <tr width="600" height="100">
+    <td colspan="2"><img src='https://www.clipartmax.com/png/middle/466-4667490_image-gallery-of-java-logo-transparent-duke-java-png.png' width="100" >
+    <h1 style='margin-left:50px;display:inline-block;'>Board</h1>
+    <input type="button" value="회원가입" id="memInsertForm">
+    </td>
+    </tr>
+     <tr>
+    	<td width="150" height="350" align="center" valign="top">
+    	<div id="loginDiv">    	    	      
+    			ID <input type="text" size="10" name="id" id="id"> <br>
+    			PW <input type="password" size="10" name="pw" id="pw"> <br>
+    			<input type="button" value="login" id="loginBtn" />     		
+    	</div>
+    	</td>
+    	<td>
+    	<div id="mainDiv">
+    	
+    	</div>
+    	
+    	
+    	</td>
+    </tr>
+    <tr width="600" height="50"><td colspan="2" align="right">@Copyright by JES</td></tr>
+  </table>
+</body>
+
+</html>
