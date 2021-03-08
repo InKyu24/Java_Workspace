@@ -24,8 +24,6 @@ ${id }~ Welcome
 	<input type="submit" value="장바구니 담기"> <br>
 </form>
 
-
-
 <%--
 지시어 	: <%@ page, include, taglib %>
 선언 		: <%! 멤버변수, 메서드 %>

@@ -1,6 +1,8 @@
 package web.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 
 @WebServlet("/main")
@@ -26,18 +33,35 @@ public class MainServlet extends HttpServlet {
 
 	protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String sign = request.getParameter("sign");
+		BufferedReader br = request.getReader();
+		JSONObject jsonObject = (JSONObject) JSONValue.parse(br);
+		
+		String sign = (String) jsonObject.get("sign");
+//		String sign = request.getParameter("sign");
+		
 		if (sign == null) {
 			return;
 		} else if (sign.equals("login")) {
-			String id = request.getParameter("id");
-			String pw = request.getParameter("pw");
+//			String id = request.getParameter("id");
+//			String pw = request.getParameter("pw");
+				
+			String id=(String) jsonObject.get("id");
+			String pw=(String) jsonObject.get("pw");
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			
-			RequestDispatcher disp = request.getRequestDispatcher("login_ok.jsp");
-			disp.forward(request, response);
+			JSONObject returnObject = new JSONObject ();
+			returnObject.put("id", id);
+			returnObject.put("pw", pw);
+
+			String returnString=returnObject.toJSONString();
+			
+			PrintWriter out=response.getWriter();
+			out.append(returnString);
+			
+//			RequestDispatcher disp = request.getRequestDispatcher("login_ok.xml");
+//			disp.forward(request, response);
 			
 		} else if (sign.equals("basketInsert")) {
 			String product = request.getParameter("product");

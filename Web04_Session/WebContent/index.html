@@ -3,13 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function (){
+	$("#loginBtn").click(function(){
+		$.post(
+			"main",
+			JSON.stringify({
+				sign:"login",
+				id:$("#id").val(),
+				pw:$("#pw").val()
+		    }),function(msg,status){
+				var obj=JSON.parse(msg);
+				$("#msgDiv").html(obj.id+"님 환영합니다")
+		});
+	});
+});
+
+	
+</script>
 </head>
 <body>
-	<form action="main">
-	<input type="hidden" name="sign" value="login">
-	id <input name="id"> <br>
-	pw <input name="pw" type="password"> <br>
-	<input type="submit" value="로그인">	
-	</form>
+	id <input name="id" id="id"> <br>
+	pw <input name="pw" id="pw" type="password"> <br>
+	<input type="button" value="로그인" id="loginBtn">	
+	
+	<div id="msgDiv"></div>
 </body>
 </html>
