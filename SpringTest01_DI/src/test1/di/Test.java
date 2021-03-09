@@ -15,9 +15,14 @@ public class Test {
 //		System.out.println(person1.getName());
 		
 		BeanFactory factory = new XmlBeanFactory(new FileSystemResource("person.xml"));
-		Person p = (Person) factory.getBean("person1");
-		System.out.println(p.getName());
+		Person p1 = (Person) factory.getBean("person1");
+		System.out.println(p1);
 		
+		Person p2 = (Person) factory.getBean("person2");
+		System.out.println(p2);
+		
+		Person p3 = (Person) factory.getBean("person3");
+		System.out.println(p3);
 	}//End main method
 
 }//End class
