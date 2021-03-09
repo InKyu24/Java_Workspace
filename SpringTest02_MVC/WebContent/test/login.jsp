@@ -17,6 +17,6 @@
 			<td>${userID }</td>
 			<td>${passwd }</td>
 		</tr>			
-	</table>
+	</table> 
 </body>
 </html>
