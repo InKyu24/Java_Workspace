@@ -23,6 +23,23 @@ public class UserController extends MultiActionController {
 		
 	}
 	
-
+	public ModelAndView memberInfo (HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		request.setCharacterEncoding("utf-8");
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+		mav.addObject("id", id);
+		mav.addObject("pw", pw);
+		mav.addObject("name", name);
+		mav.addObject("email", email);
+		
+		
+		mav.setViewName("memberInfo");
+		return mav;
+		
+	}
 }
 
