@@ -13,13 +13,15 @@ import web.vo.MemberVO;
 
 public class MemberControllerImpl extends MultiActionController implements MemberController{
 	private MemberService memberService;
+	// 반드시 setter를 구현해야 한다.
 	public void setMemberService(MemberService memberService) {
 		this.memberService = memberService;
 	}
 	
 	public ModelAndView listMembers (HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<MemberVO> membersList = memberService.listMembers();
-		ModelAndView mav = new ModelAndView("listMembers"); // WEB-INF/views/listMembers.jsp
+		ModelAndView mav = new ModelAndView("listMembers"); // WEB-INF/views/listMembers.do로 요청 시 호출된다.
+		// addObject() 메서드를 이용해 조회한 회원 정보를 바인딩
 		mav.addObject("membersList",membersList);
 		return mav;
 	}

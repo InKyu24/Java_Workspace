@@ -7,6 +7,7 @@ import web.dao.MemberDAO;
 public class MemberServiceImpl implements MemberService{
 	private MemberDAO memberDAO;
 	
+	// memberDAO 속성에 setter를 이용하여 설정 파일에서 생성된 memberDAO 빈을 주입한다.
 	public void setMemberDAO(MemberDAO memberDAO) {
 		this.memberDAO = memberDAO;
 	}

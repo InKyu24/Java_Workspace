@@ -18,6 +18,7 @@
 			<td> <b>가입일</b> </td>
 		</tr>
 		
+		<!-- 컨트롤러에서 바인딩한 memberList로 접근 -->
 		<c:forEach var="m" items="${membersList }">
 			<tr>
 				<td>${m.id }</td>
