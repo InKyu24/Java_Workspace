@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- member.xml의 네임스페이스를 지정 -->
+<mapper namespace="mapper.member">
+	<!-- SQL문을 실행한 후 반환되는 레코드들을 SqlMapConfig.xml의 <typeAlias>태그에서 지정한 memberVO 빈에 저장 -->
+	<resultMap id="memResult" type="memberVO">
+		<!-- 레코드의 컬럼 이름에 대해 memberVO의 같은 속성에 값을 설정 -->
+		<result property="id" column="memid" />
+        <result property="pwd" column="pw" />
+        <result property="name" column="memname" />
+        <result property="date" column="memdate" />
+	</resultMap> 
+	
+	<!-- DAO에서 id를 이용해 해당 SQL문을 호출하고 반환되는 레코드를 memResult에 저장 -->
+	<select id="selectAllMemberList" resultMap="memResult">
+      <![CDATA[
+         select * from member order by memdate desc	 	
+      ]]>
+	</select>
+</mapper>
