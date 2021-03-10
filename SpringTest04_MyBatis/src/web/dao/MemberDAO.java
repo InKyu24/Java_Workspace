@@ -31,5 +31,25 @@ public class MemberDAO {
 		List<MemberVO> list = session.selectList("mapper.member.selectAllMemberList");
 		return list;
 	}
+	
+	public String login (MemberVO m) {
+		// 실제 member.xml의 SQL문을 호출하는 데 사용되는 SqlSession 객체를 가져온다.
+		SqlSession session = sqlMapper.openSession();
+		String name = (String) session.selectOne("mapper.member.login", m);
+		return name;
+	}
 
+	public MemberVO selectMemberById(String id) {
+		// 실제 member.xml의 SQL문을 호출하는 데 사용되는 SqlSession 객체를 가져온다.
+		SqlSession session = sqlMapper.openSession();
+		MemberVO memberVO = (MemberVO) session.selectOne("mapper.member.selectMemberById", id);
+		return memberVO;
+	}
+
+	public List<MemberVO> byPwList(String pw) {
+		SqlSession session = sqlMapper.openSession();
+		List<MemberVO> list = session.selectList("mapper.member.selectMemberByPw", pw);
+		return list;
+	}
+	
 }

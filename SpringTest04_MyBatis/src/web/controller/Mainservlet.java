@@ -37,11 +37,45 @@ public class Mainservlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		// selectAllMemberList()를 호출
-		List<MemberVO> memberList = dao.selectAllMemberList();
-		
-		request.setAttribute("memberList", memberList);
-		RequestDispatcher dispatch = request.getRequestDispatcher("listMembers.jsp");
-		dispatch.forward(request, response);
+		String sign = request.getParameter("sign");
+		if (sign == null) {
+			return;
+		} else if (sign.equals("listMembers")) {
+			// selectAllMemberList()를 호출
+			List<MemberVO> memberList = dao.selectAllMemberList();
+			
+			request.setAttribute("memberList", memberList);
+			RequestDispatcher dispatch = request.getRequestDispatcher("listMembers.jsp");
+			dispatch.forward(request, response);
+			
+		} else if (sign.equals("login")) {
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			MemberVO m = new MemberVO(id, pw);
+			String name = dao.login(m);
+			
+			request.setAttribute("name", name);
+			RequestDispatcher dispatch = request.getRequestDispatcher("login_ok.jsp");
+			dispatch.forward(request, response);
+			
+		} else if (sign.equals("selectMemberById")) {
+			String id = request.getParameter("id");
+			MemberVO memberVO= dao.selectMemberById(id);
+			
+			request.setAttribute("memberVO", memberVO);
+			RequestDispatcher dispatch = request.getRequestDispatcher("memberById.jsp");
+			dispatch.forward(request, response);
+			
+		} else if (sign.equals("selectMemberByPw")) {
+			String pw = request.getParameter("pw");
+			List<MemberVO> list = dao.byPwList(pw);
+			
+			request.setAttribute("list", list);
+			RequestDispatcher dispatch = request.getRequestDispatcher("memberByPw.jsp");
+			dispatch.forward(request, response);			
+			
+
+		}
 	}
 }
+

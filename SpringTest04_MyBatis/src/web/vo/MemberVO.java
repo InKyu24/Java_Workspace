@@ -17,6 +17,11 @@ public class MemberVO {
 	public MemberVO() {
 	}
 
+	public MemberVO(String id, String pw) {
+		this.id = id;
+		this.pw = pw;
+	}
+
 	public String getId() {
 		return id;
 	}

@@ -14,10 +14,34 @@
         <result property="date" column="memdate" />
 	</resultMap> 
 	
-	<!-- DAO에서 id를 이용해 해당 SQL문을 호출하고 반환되는 레코드를 memResult에 저장 -->
+	<!-- 전체 회원 정보 조회 -->
+	<!-- DAO에서 selectAllMemberList를 이용해 해당 SQL문을 호출하고 반환되는 레코드를 memResult에 저장 -->
 	<select id="selectAllMemberList" resultMap="memResult">
       <![CDATA[
          select * from member order by memdate desc	 	
+      ]]>z
+	</select>
+	
+	<!-- id와 pw를 통해 해당 회원의 name 조회 -->
+	<!-- 하나의 레코드만을 반환할 때는 resultType 이용 가능 -->
+	<select id="login" resultType="String" parameterType="MemberVO">
+      <![CDATA[
+         select memname from member where memid=#{id} and pw=#{pw}	
+      ]]>
+	</select>	
+	
+	<!-- id를 통해 회원 정보 조회 -->
+	<select id="selectMemberById" resultMap="memResult" parameterType="String">
+      <![CDATA[
+         select * from member where memid=#{id}	
       ]]>
 	</select>
+	
+	<!-- pw를 통해 회원 정보 조회 -->
+	<select id="selectMemberByPw" resultMap="memResult">
+      <![CDATA[
+         select * from member where pw=#{pw}	
+      ]]>
+	</select>
+	
 </mapper>
