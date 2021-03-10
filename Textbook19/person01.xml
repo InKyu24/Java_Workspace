@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+                             "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<!-- 소스 코드에서 new를 이용해 직접 객체를 생성하던 것을 person.xml에서 설정 -->
+<beans>
+   <bean id="personService" class="com.spring.ex01.PersonServiceImpl"> 
+   <!-- PersonServiceImpl 클래스에 대한 빈 생성, 빈에 접근할 수 있는 빈 아이디 personService-->
+      <property name="name">
+      <!-- PersonServiceImpl 내 name 속성 값을 홍길동으로 초기화 -->
+         <value>홍길동</value>
+      </property>
+   </bean>
+</beans>

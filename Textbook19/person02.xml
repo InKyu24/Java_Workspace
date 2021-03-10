@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+                             "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<!-- 소스 코드에서 new를 이용해 직접 객체를 생성하던 것을 person.xml에서 설정 -->
+<beans>
+	<bean id="personService1" class="com.spring.ex02.PersonServiceImpl"> 
+	<!-- PersonServiceImpl 클래스에 대한 빈 생성, 빈에 접근할 수 있는 빈 아이디 personService1-->
+	<!-- 생성자로 value인 이순신을 전달하여 속성 name을 초기화 -->
+		<constructor-arg value="이순신"></constructor-arg>
+    </bean>
+   
+    <bean id="personService2" class="com.spring.ex02.PersonServiceImpl">
+    <!-- PersonServiceImpl 클래스에 대한 빈 생성, 빈에 접근할 수 있는 빈 아이디 personService2-->
+    <!-- 인자가 두 개인 생성자로 id가 personService2인 빈을 생성하고, 생성자로 두 개의 값을 전달하여 name와 age를 초기화한다. -->
+   	<constructor-arg value="손흥민"></constructor-arg>
+   	<constructor-arg value="23"></constructor-arg>
+   	</bean>
+</beans>
