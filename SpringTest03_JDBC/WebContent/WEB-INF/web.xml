@@ -10,6 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 톰캣 실행 시 빈 설정 xml 파일들을 읽어 들이기 위한 스프링의 ContextLoaderListener 설정 -->
   <listener>
   	<listener-class>
   		org.springframework.web.context.ContextLoaderListener
@@ -18,6 +19,7 @@
   
   <context-param>
   	<param-name>contextConfigLocation</param-name>
+  	<!-- 애플리케이션 실행 시 ContextLoaderListener로 해당 위치의 설정 파일을 읽어 들인다. -->
   	<param-value>
   		/WEB-INF/config/action-service.xml
   		/WEB-INF/config/action-dataSource.xml
