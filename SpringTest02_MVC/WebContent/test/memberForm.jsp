@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="memberInfo.do">
+	<form method="post" action="${contextPath}/SpringTest02_MVC/test/memberInfo.do">
 		<h1>회원 가입</h1>
 		<table border="1">
 			<tr align="center">

@@ -1,4 +1,4 @@
-package web.controller;
+package ex01;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +12,7 @@ public class SimpleUrlController implements Controller{
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 서비스 할 내용[login, logout, insert, delete...]
 		System.out.println("action-servlet.xml으로부터 handle request 호출됨");
-		return new ModelAndView("index.jsp");
+		return new ModelAndView("test/index.jsp");
 	}
 	
 }
