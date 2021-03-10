@@ -48,8 +48,23 @@ public class MemberDAO {
 
 	public List<MemberVO> byPwList(String pw) {
 		SqlSession session = sqlMapper.openSession();
-		List<MemberVO> list = session.selectList("mapper.member.selectMemberByPw", pw);
-		return list;
+		List<MemberVO> memlist = session.selectList("mapper.member.selectMemberByPw", pw);
+		return memlist;
 	}
-	
+
+	public void memberInsert(MemberVO memberVO) {
+		SqlSession session = sqlMapper.openSession();
+		try {
+			session.insert("mapper.member.memberInsert", memberVO);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+		}
+	}
+
+	public void memberUpdate(MemberVO memberVO) {
+		SqlSession session = sqlMapper.openSession();
+		session.update("mapper.member.memberUpdate", memberVO);
+		session.commit();
+	}
 }

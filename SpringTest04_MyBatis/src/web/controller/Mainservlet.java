@@ -1,6 +1,7 @@
 package web.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -68,13 +69,31 @@ public class Mainservlet extends HttpServlet {
 			
 		} else if (sign.equals("selectMemberByPw")) {
 			String pw = request.getParameter("pw");
-			List<MemberVO> list = dao.byPwList(pw);
+			List<MemberVO> memlist = dao.byPwList(pw);
 			
-			request.setAttribute("list", list);
+			request.setAttribute("list", memlist);
 			RequestDispatcher dispatch = request.getRequestDispatcher("memberByPw.jsp");
 			dispatch.forward(request, response);			
 			
-
+		} else if (sign.equals("memberInsert")) {
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			String name = request.getParameter("name");
+			Date now = new Date();
+			MemberVO memberVO = new MemberVO (id, pw, name, now);
+			
+			dao.memberInsert(memberVO);
+			RequestDispatcher dispatch = request.getRequestDispatcher("index.html");
+			dispatch.forward(request, response);	
+		} else if (sign.equals("memberUpdate")) {
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			String name = request.getParameter("name");
+			MemberVO memberVO = new MemberVO (id, pw, name, null);
+			
+			dao.memberUpdate(memberVO);
+			RequestDispatcher dispatch = request.getRequestDispatcher("main?sign=listMembers");
+			dispatch.forward(request, response);
 		}
 	}
 }
