@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
+import web.dao.DAO;
 import web.dao.MemberDAO;
 import web.util.MyException;
 
@@ -24,7 +25,7 @@ public class MainServlet extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		try {
-			mDao = new MemberDAO();
+		mDao = new MemberDAO();
 		} catch (MyException e) {
 			e.printStackTrace();
 		}
