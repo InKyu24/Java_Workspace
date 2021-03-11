@@ -8,7 +8,8 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
 	<!-- AccDAO 빈을 AccountService 빈의 속성에 주입 -->
-	<bean id="accService" class="web.service.AccountServiceImpl">
-		<property name="accountDAO" ref="accDAO"/>
+	<bean id="accountService" class="web.service.AccountServiceImpl">
+		<property name="accountDAO" ref="accountDAO"></property>
 	</bean>
+
 </beans>

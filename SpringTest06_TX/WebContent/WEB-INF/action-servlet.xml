@@ -18,17 +18,17 @@
       	<property name="suffix" value=".jsp"/>
 	</bean>
    
-	<bean id="accController" class="web.controller.AccountControllerImpl">
+	<bean id="accountController" class="web.controller.AccountControllerImpl">
     	<property name="methodNameResolver">
         	<ref local="accountMethodNameResolver"/>
       	</property>
-      	<property name="accountService" ref="accService"></property>
+      	<property name="accountService" ref="accountService"></property>
    </bean>
 
 	<bean id="accountMethodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver" >
 		<property  name="mappings" >
         	<props>
-          		<prop key="/account/sendMoney.do" >sendMoney</prop>
+          		<prop key="/account/sendMoney.do">sendMoney</prop>
        		</props>
       	</property>
 	</bean>
@@ -36,7 +36,7 @@
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
     	<property name="mappings">
         	<props>
-            	<prop key="/acount/*.do">accountController</prop>
+            	<prop key="/account/*.do">accountController</prop>
          	</props>
       	</property>
 	</bean>
