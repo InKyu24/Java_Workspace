@@ -57,4 +57,11 @@
         	update member set pw=#{pw}, memname=#{name} where memid=#{id}	
       	]]>
 	</update>
+	
+	<!--  회원 정보 삭제 -->
+	<update id="memberDelete" parameterType="String" >
+		<![CDATA[
+        	Delete from member where memid=#{id}
+      	]]>
+	</update>
 </mapper>

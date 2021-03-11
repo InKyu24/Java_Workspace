@@ -80,20 +80,30 @@ public class Mainservlet extends HttpServlet {
 			String pw = request.getParameter("pw");
 			String name = request.getParameter("name");
 			Date now = new Date();
-			MemberVO memberVO = new MemberVO (id, pw, name, now);
 			
+			MemberVO memberVO = new MemberVO (id, pw, name, now);
 			dao.memberInsert(memberVO);
+			
 			RequestDispatcher dispatch = request.getRequestDispatcher("index.html");
 			dispatch.forward(request, response);	
+			
 		} else if (sign.equals("memberUpdate")) {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
 			String name = request.getParameter("name");
-			MemberVO memberVO = new MemberVO (id, pw, name, null);
 			
+			MemberVO memberVO = new MemberVO (id, pw, name, null);
 			dao.memberUpdate(memberVO);
+			
 			RequestDispatcher dispatch = request.getRequestDispatcher("main?sign=listMembers");
 			dispatch.forward(request, response);
+			
+		} else if (sign.equals("memberDelete")) {
+			String id = request.getParameter("id");
+			
+			dao.memberDelete(id);
+			RequestDispatcher dispatch = request.getRequestDispatcher("main?sign=listMembers");
+			dispatch.forward(request, response);	
 		}
 	}
 }

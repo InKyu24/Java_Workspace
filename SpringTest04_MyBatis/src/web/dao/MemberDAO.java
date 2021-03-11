@@ -54,17 +54,19 @@ public class MemberDAO {
 
 	public void memberInsert(MemberVO memberVO) {
 		SqlSession session = sqlMapper.openSession();
-		try {
 			session.insert("mapper.member.memberInsert", memberVO);
 			session.commit();
-		} catch (Exception e) {
-			session.rollback();
-		}
 	}
 
 	public void memberUpdate(MemberVO memberVO) {
 		SqlSession session = sqlMapper.openSession();
 		session.update("mapper.member.memberUpdate", memberVO);
 		session.commit();
+	}
+	
+	public void memberDelete(String id) {
+		SqlSession session = sqlMapper.openSession();
+		session.delete("mapper.member.memberDelete", id);
+		session.commit();	
 	}
 }
