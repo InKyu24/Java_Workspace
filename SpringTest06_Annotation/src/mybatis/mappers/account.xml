@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- member.xml의 네임스페이스를 지정 [select id가 중복되는 것을 방지하는 목적]-->
+<mapper namespace="mapper.account">
+	<update id="updateBalance1">
+	<![CDATA[
+			update cust_account
+			set balance=balance-500000
+			where accountNo = '70-490-930'
+		]]>
+	</update>
+	
+	<update id="updateBalance2">
+	<![CDATA[
+			update cust_account
+			set balance=balance+500000
+			where accountNo = '70-490-911'
+		]]>
+	</update>
+</mapper>

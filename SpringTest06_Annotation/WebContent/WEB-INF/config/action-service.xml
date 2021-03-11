@@ -7,9 +7,4 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
-	<!-- AccDAO 빈을 AccountService 빈의 속성에 주입 -->
-	<bean id="accountService" class="web.service.AccountServiceImpl">
-		<property name="accountDAO" ref="accountDAO"></property>
-	</bean>
-
 </beans>

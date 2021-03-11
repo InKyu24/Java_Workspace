@@ -33,11 +33,6 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-
-	<!-- SqlSession 빈을 accountDAO 속성 빈에 주입 -->
-	<bean id="accountDAO" class="web.dao.AccountDAOImpl">
-		<property name="sqlSession" ref="sqlSession"></property>
-	</bean>
 	
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>		
