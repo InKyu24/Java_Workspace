@@ -8,7 +8,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
 	<!-- memberDAO 빈을 memberService 빈의 속성에 주입 -->
-	<bean id="memberService" class="com.spring.member.service.MemberServiceImpl">
+	<bean id="memberService" class="web.service.MemberServiceImpl">
 		<property name="memberDAO" ref="memberDAO"/>
 	</bean>
    

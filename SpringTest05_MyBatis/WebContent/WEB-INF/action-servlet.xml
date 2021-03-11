@@ -18,7 +18,7 @@
       	<property name="suffix" value=".jsp"/>
 	</bean>
    
-	<bean id="memberController" class="com.spring.member.controller.MemberControllerImpl">
+	<bean id="memberController" class="web.controller.MemberControllerImpl">
     	<property name="methodNameResolver">
         	<ref local="memberMethodResolver"/>
       	</property>

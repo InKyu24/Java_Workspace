@@ -32,7 +32,7 @@
 	</bean>
 
 	<!-- SqlSession 빈을 memberDAO 속성 빈에 주입 -->
-	<bean id="memberDAO" class="com.spring.member.dao.MemberDAOImpl">
+	<bean id="memberDAO" class="web.dao.MemberDAOImpl">
 		<property name="sqlSession" ref="sqlSession"></property>
 	</bean>
 
