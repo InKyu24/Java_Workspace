@@ -9,4 +9,6 @@ public interface AccountController {
 
 	ModelAndView sendMoney(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
+	ModelAndView accountsList(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 }

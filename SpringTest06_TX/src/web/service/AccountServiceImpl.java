@@ -1,9 +1,12 @@
 package web.service;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import web.dao.AccountDAO;
+import web.vo.AccountVO;
 
 // AccountServiceImpl 클래스의 모든 메서드에 트랜잭션을 적용
 @Transactional(propagation = Propagation.REQUIRED)
@@ -22,5 +25,12 @@ public class AccountServiceImpl implements AccountService {
 		accountDAO.updateBalance1(); // 출금
 		accountDAO.updateBalance2(); // 입금
 	}
+
+	@Override
+	public List<AccountVO> accountsList() {
+		// TODO Auto-generated method stub
+		return accountDAO.accountslists();
+	}
+
 
 }

@@ -20,4 +20,18 @@
 			where accountNo = '70-490-911'
 		]]>
 	</update>
+	
+	<!-- SQL문을 실행한 후 반환되는 레코드들을 SqlMapConfig.xml의 <typeAlias>태그에서 지정한 accountVO 빈에 저장 -->
+	<resultMap id="accountResult" type="accountVO">
+		<!-- 레코드의 컬럼 이름에 대해 accountVO의 같은 속성에 값을 설정 -->
+		<result property="no" column="accountNO" />
+		<result property="name" column="cusname" />
+        <result property="balance" column="balance" />
+	</resultMap> 
+	
+	<select id="accountsList" resultMap="accountResult">>
+	<![CDATA[
+			SELECT ACCOUNTNO,CUSNAME,BALANCE FROM CUST_ACCOUNT
+		]]>
+	</select>
 </mapper>

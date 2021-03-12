@@ -1,6 +1,10 @@
 package web.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
+
+import web.vo.AccountVO;
 
 public class AccountDAOImpl implements AccountDAO {
 
@@ -23,6 +27,11 @@ public class AccountDAOImpl implements AccountDAO {
 	public void updateBalance2() {
 		sqlSession.update("mapper.account.updateBalance2");
 		
+	}
+
+	@Override
+	public List<AccountVO> accountslists() {
+		return sqlSession.selectList("mapper.account.accountsList");
 	}
 
 }

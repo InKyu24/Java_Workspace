@@ -29,6 +29,7 @@
 		<property  name="mappings" >
         	<props>
           		<prop key="/account/sendMoney.do">sendMoney</prop>
+          		<prop key="/account/accountsList.do">accountsList</prop>
        		</props>
       	</property>
 	</bean>

@@ -4,4 +4,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+	<!-- 마이바티스에서 데이터 전달에 사용될 accountVO 빈을 설정 -->
+   <typeAliases>
+      <typeAlias type="web.vo.AccountVO" alias="accountVO"/>
+   </typeAliases>
 </configuration>
