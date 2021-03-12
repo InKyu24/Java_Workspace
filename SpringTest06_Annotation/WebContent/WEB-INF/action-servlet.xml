@@ -16,7 +16,7 @@
 	<context:component-scan base-package="web"></context:component-scan>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-      	<property name="prefix" value="/WEB-INF/views/account/" />  <!-- JSP 파일의 위치 지정 -->
+      	<property name="prefix" value="/WEB-INF/views/" />  <!-- JSP 파일의 위치 지정 -->
       	<property name="suffix" value=".jsp"/>
 	</bean>
 	

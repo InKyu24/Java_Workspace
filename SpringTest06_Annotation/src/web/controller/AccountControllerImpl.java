@@ -26,7 +26,7 @@ public class AccountControllerImpl extends MultiActionController implements Acco
 	// sendMoney.do에 접근하게 되면 Get 방식으로 해당 메서드가 호출된다.
 	@RequestMapping(value="/sendMoney.do", method = RequestMethod.GET)
 	public ModelAndView sendMoney(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav = new ModelAndView("result"); // WEB-INF/views/account/result.jsp
+		ModelAndView mav = new ModelAndView("account/result"); // WEB-INF/views/account/result.jsp
 		accountService.sendMoney();
 		return mav;
 		
