@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- member.xml의 네임스페이스를 지정 [select id가 중복되는 것을 방지하는 목적]-->
+<mapper namespace="mapper.member">
+	<select id="login" parameterType="memberVO" resultType="String">
+		<![CDATA[
+			select MEMNAME from MEMBER where MEMID = #{id} and PW = #{pw}
+		]]>
+	</select>
+</mapper>
