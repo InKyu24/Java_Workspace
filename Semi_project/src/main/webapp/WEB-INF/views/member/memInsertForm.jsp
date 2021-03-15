@@ -41,7 +41,7 @@
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			    						<input type="password" name="userPWd" id="pw" class="form-control input-sm" placeholder="비밀번호 입력">
+			    						<input type="password" name="userPW" id="pw" class="form-control input-sm" placeholder="비밀번호 입력">
 			    					</div>
 			    				</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
