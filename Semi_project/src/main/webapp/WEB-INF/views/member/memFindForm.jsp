@@ -10,7 +10,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="${contextPath}/resources/js/memForm.js"></script>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>아이디 비밀번호 찾기</title>
 </head>
 <body>
 <div class="container">
@@ -18,7 +18,43 @@
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         	<div class="panel panel-default">
         		<div class="panel-heading">
-			    		<h3 class="panel-title">캠핑을 좋아한다면 바로 가입 하세요! <small>그리고 지갑을 여세요!</small></h3>
+			    		<h3 class="panel-title">아이디를 잃어버리셨나요?! <small>참 속상하네요</small></h3>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form method="post">
+			    		<div class="row">
+		    				<div class="row">
+			    				<div class="col-md-6">
+			    					<div class="form-group">
+			                <input type="text" name="userName" id="nameForId" class="form-control input-sm" placeholder="이름 입력">
+			    					</div>
+			    				</div>
+			    			</div>
+			    				    	
+		    				<div class="row">
+			    				<div class="col-md-6">
+			    					<div class="form-group">
+			                <input type="date" name="userBirth" id="birthForId" class="form-control input-sm" placeholder="생년월일 입력">
+			    					</div>
+			    				</div>
+			    			</div>
+			    		
+			    			<input type="submit" id="memFindId" value="아이디찾기" class="btn btn-info btn-block">
+			    		
+			    		</form>
+			    	</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+			    	
+			    	
+   	<div class="container">
+        <div class="row centered-form">
+       		 <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        		<div class="panel panel-default">
+			    	<div class="panel-heading">
+			    		<h3 class="panel-title">비밀번호를 잃어버리셨나요?! <small>더욱 더 속상하네요</small></h3>
 			 			</div>
 			 			<div class="panel-body">
 			    		<form method="post">
@@ -36,29 +72,14 @@
 			                <input type="text" name="userName" id="name" class="form-control input-sm" placeholder="이름 입력">
 			    					</div>
 			    				</div>
-			    			</div>
-			    				    	
-		    				<div class="row">
-			    				<div class="col-xs-6 col-sm-6 col-md-6">
-			    					<div class="form-group">
-			    						<input type="password" name="userPW" id="pw" class="form-control input-sm" placeholder="비밀번호 입력">
-			    					</div>
-			    				</div>
-			    				<div class="col-xs-6 col-sm-6 col-md-6">
-			    					<div class="form-group">
-			    						<input type="password" name="userPW2" id="pw2" class="form-control input-sm" placeholder="비밀번호 확인">
-			    					</div>
-			    				</div>
-			    			</div>	    	
-			    					
+			    			</div>	
 			    			<div class="row">
 			    				<div class="col-md-6">
 			    					<div class="form-group">
 			                <input type="number" name="userPhone" id="phone" class="form-control input-sm" value=01012345678 placeholder="전화번호 입력">
 			    					</div>
 			    				</div>
-			    			</div>
-			    			
+			    			</div>		    			
 			    			<div class="row">
 			    				<div class="col-md-6">
 			    					<div class="form-group">
@@ -67,10 +88,11 @@
 			    				</div>
 			    			</div>
 			    		
-			    			<input type="submit" id="memInsert" value="가입하기" class="btn btn-info btn-block">
+			    			<input type="submit" id="memFindPw" value="비밀번호 찾기" class="btn btn-info btn-block">
 			    		
 			    		</form>
 			    	</div>
+			    	
 	    		</div>
     		</div>
     	</div>

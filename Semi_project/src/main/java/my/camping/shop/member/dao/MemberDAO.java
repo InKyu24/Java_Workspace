@@ -6,4 +6,10 @@ public interface MemberDAO {
 
 	void memInsert(MemberVO memberVO);
 
+	String login(MemberVO memVO);
+
+	String memFindId(MemberVO memVO);
+
+	String memFindPw(MemberVO memVO);
+
 }

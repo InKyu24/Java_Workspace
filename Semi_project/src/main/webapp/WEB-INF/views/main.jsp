@@ -57,24 +57,23 @@
 
       <div class="col-lg-3">
 		
-  			<div class="loginForm">
+		<div class="memForm" id="memInfo">
         	<form id='loginForm' method='post'>
         		<table>
          	<tr>	
-           		<input type="hidden" name="sign" value="login">
 				<td>ID</td>
-				<td><input type="text" id="id"> </td> <td></td>
+				<td><input type="text" id="id" class="form-control input-sm"> </td> <td></td>
 			</tr>
 			<tr>
 				<td>PW</td>
-				<td><input type="password" id="pw"></td>
-				<td><button type="submit" class="btn btn-dark btn btn-primary btn-sm" onclick="">로그인</button> </td>
+				<td><input type="password" id="pw" class="form-control input-sm"></td>
+				<td><button type="submit" class="btn btn-dark btn btn-primary btn-sm" id="memLogin">로그인</button> </td>
 				</table>
-			</div>
 			</form>
-			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('##', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');">ID/PW 찾기</button>
+			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memFindForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=750');">ID/PW 찾기</button>
 			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memInsertForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');">회원가입</button>
-        
+        </div>
+        	<div id="msgDiv"></div>
         <h1 class="my-4">캠핑 용품</h1>
         		
         <div class="list-group">
@@ -239,6 +238,7 @@
 
   <!-- Bootstrap core JavaScript -->
   <script src="${contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${contextPath}/resources/js/memLogin.js"></script>
   <script src="${contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>

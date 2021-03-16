@@ -13,7 +13,23 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO memDAO;
 	
 	@Override
-	public void memInsert (MemberVO memberVO) throws MemberException{
-		memDAO.memInsert(memberVO);
+	public void memInsert (MemberVO memVO) throws MemberException{
+		memDAO.memInsert(memVO);
+	}
+
+	@Override
+	public String memLogin(MemberVO memVO) throws MemberException{
+		return memDAO.login(memVO);		
+	}
+
+	@Override
+	public String memFindId(MemberVO memVO)  throws MemberException{
+		return memDAO.memFindId(memVO);
+		
+	}
+
+	@Override
+	public String memFindPw(MemberVO memVO) {
+		return memDAO.memFindPw(memVO);
 	}
 }

@@ -5,9 +5,11 @@
     
 <mapper namespace="mapper.member">
 	<resultMap type="memberVO" id="memResult">
-		<result property="id" column="memid" />
+		<result property="id" column="id" />
 		<result property="pw" column="pw" />
-		<result property="name" column="memname" />
+		<result property="name" column="name" />
+		<result property="phone" column="phone" />
+		<result property="birth" column="birth" />
 	</resultMap>
 		
 	<insert id="memInsert"   parameterType="memberVO" >
@@ -17,23 +19,32 @@
 		]]>
 	</insert>
 	
+	<select id="memLogin" resultType="String" parameterType="memberVO">
+		<![CDATA[
+			select name from campmem where id=#{id} and pw=#{pw}
+		]]>
+	</select>
+	
+	<select id="memFindId" resultType="String" parameterType="String">
+		<![CDATA[
+			select id from campmem where name=#{name} and birth=#{birth}
+		]]>
+		
+	</select>
+	
+		<select id="memFindPw" resultType="String" parameterType="String">
+		<![CDATA[
+			select pw from campmem where id=#{id} and name=#{name} and phone=#{phone} and birth=#{birth} 
+		]]>
+	</select>
+	
 	<select id="memAllList" resultMap="memResult">
 		<![CDATA[
 			select * from campmem
 		]]>
 	</select>
 	
-	<select id="memlogin" resultType="String" parameterType="memberVO">
-		<![CDATA[
-			select memname from campmem where id=#{id} and pw=#{pw}
-		]]>
-	</select>
 	
-	<select id="memById" resultMap="memResult" parameterType="String">
-		<![CDATA[
-			select * from campmem where id=#{id}
-		]]>
-	</select>
 	
 	<select id="memByPw"  resultMap="memResult" parameterType="String">
 		<![CDATA[

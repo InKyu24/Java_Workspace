@@ -5,20 +5,27 @@ import java.util.Date;
 public class MemberVO {
 	String name, id, pw, phone, birth;
 	
-	public MemberVO(String id, String pw) {
-		setId(id);
-		setPw(pw);
+	public MemberVO(String name, String birth) {
+		setName(name);
+		setBirth(birth);
 	}
 	
 	public MemberVO(String id, String name, String pw) {
-		this(id,pw);
+		setId(id);
+		setPw(pw);
 		setName(name);
 	}
 	
-	public MemberVO(String id, String name, String pw, String phone, String birth) {
-		this(name,id,pw);
+	public MemberVO(String id, String name, String phone, String birth) {
+		setId(id);
+		setName(name);
 		setPhone(phone);
 		setBirth(birth);
+	}
+
+	public MemberVO(String id, String name, String pw, String phone, String birth) {
+		this(id, name, phone, birth);
+		setPw(pw);
 	}
 
 	public String getName() {

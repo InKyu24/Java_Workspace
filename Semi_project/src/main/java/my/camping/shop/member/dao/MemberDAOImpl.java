@@ -13,7 +13,25 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	
 	@Override
-	public void memInsert(MemberVO memberVO) {
-		sqlSession.insert("mapper.member.memInsert",memberVO);	
+	public void memInsert(MemberVO memVO) {
+		sqlSession.insert("mapper.member.memInsert",memVO);	
+	}
+
+
+	@Override
+	public String login(MemberVO memVO) {
+		return sqlSession.selectOne("mapper.member.memLogin", memVO);
+	}
+
+
+	@Override
+	public String memFindId(MemberVO memVO) {
+		return sqlSession.selectOne("mapper.member.memFindId", memVO);
+	}
+
+
+	@Override
+	public String memFindPw(MemberVO memVO) {
+		return sqlSession.selectOne("mapper.member.memFindPw", memVO);
 	}
 }
