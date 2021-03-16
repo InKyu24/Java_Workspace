@@ -15,28 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class MainController {
-
-	@RequestMapping(value = "/main.camp", method = RequestMethod.GET)
+	@RequestMapping(value = "/main.camp", method = {RequestMethod.GET, RequestMethod.POST})
 	public String home() {
 		return "main";
 	}
-	
-	@RequestMapping (value = "member/memInsertForm.camp", method= {RequestMethod.GET, RequestMethod.POST})
-	public String memJoin () {
-		
-		return "member/memInsertForm";
-	}
-	
-	@RequestMapping(value = "memberInsert.camp", method= {RequestMethod.POST}, produces = "application/text; charset=utf8")		
-	@ResponseBody
-	public String memInsert(HttpServletRequest req, HttpServletResponse res)throws Exception{
-		String id=req.getParameter("id");
-		String pw=req.getParameter("pw");
-		String name=req.getParameter("name");
-		System.out.println("memberInsert:"+id+"\t"+pw+"\t"+name);
-	
-		return name;
-		
-	}		
-
 }

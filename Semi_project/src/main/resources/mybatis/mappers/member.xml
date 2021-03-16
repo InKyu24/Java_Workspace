@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.member">
+	<resultMap type="memberVO" id="memResult">
+		<result property="id" column="memid" />
+		<result property="pw" column="pw" />
+		<result property="name" column="memname" />
+	</resultMap>
+		
+	<insert id="memInsert"   parameterType="memberVO" >
+		<![CDATA[
+			insert into campmem(id,pw,name,phone,birth) 
+			values(#{id},#{pw},#{name},#{phone},#{birth})
+		]]>
+	</insert>
+	
+	<select id="memAllList" resultMap="memResult">
+		<![CDATA[
+			select * from campmem
+		]]>
+	</select>
+	
+	<select id="memlogin" resultType="String" parameterType="memberVO">
+		<![CDATA[
+			select memname from campmem where id=#{id} and pw=#{pw}
+		]]>
+	</select>
+	
+	<select id="memById" resultMap="memResult" parameterType="String">
+		<![CDATA[
+			select * from campmem where id=#{id}
+		]]>
+	</select>
+	
+	<select id="memByPw"  resultMap="memResult" parameterType="String">
+		<![CDATA[
+			select * from campmem where pw=#{pw}
+		]]>
+	</select>
+	
+	<update  id="memUpdate"  parameterType="memberVO" >
+		<![CDATA[
+			update campmem
+			set pw=#{pw}, name=#{name}
+			where id=#{id}
+		]]>
+	</update>
+	
+	<delete id="memDel" parameterType="String">
+		<![CDATA[
+			delete from campmem where id=#{id}
+		]]>
+	
+	</delete>
+
+</mapper> 

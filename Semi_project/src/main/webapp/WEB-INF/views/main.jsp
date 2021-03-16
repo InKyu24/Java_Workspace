@@ -58,7 +58,7 @@
       <div class="col-lg-3">
 		
   			<div class="loginForm">
-        	<form id='loginForm' method='post' class="nav-link">
+        	<form id='loginForm' method='post'>
         		<table>
          	<tr>	
            		<input type="hidden" name="sign" value="login">
@@ -68,12 +68,13 @@
 			<tr>
 				<td>PW</td>
 				<td><input type="password" id="pw"></td>
-				<td> <input id='login' type="submit" value="LOGIN"> </td>
+				<td><button type="submit" class="btn btn-dark btn btn-primary btn-sm" onclick="">로그인</button> </td>
 				</table>
-				<a href="test1.jsp">ID/PW 찾기</a>
 			</div>
 			</form>
-			<button onclick="window.open('member/memInsertForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=400');">회원가입</button>
+			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('##', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');">ID/PW 찾기</button>
+			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memInsertForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');">회원가입</button>
+        
         <h1 class="my-4">캠핑 용품</h1>
         		
         <div class="list-group">

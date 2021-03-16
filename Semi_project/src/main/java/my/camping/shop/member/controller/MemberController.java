@@ -10,5 +10,7 @@ import my.camping.shop.member.vo.MemberVO;
 
 public interface MemberController {
 
+	String memJoin();
+
 
 }
