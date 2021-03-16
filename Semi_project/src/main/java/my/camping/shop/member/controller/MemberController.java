@@ -17,7 +17,7 @@ public interface MemberController {
 
 	String memInsert(HttpServletRequest req, HttpServletResponse res) throws MemberException;
 
-	String memLogin(HttpServletRequest req, HttpServletResponse res) throws MemberException;
+	String login(HttpServletRequest req, HttpServletResponse res) throws MemberException;
 
 	String memFindId(HttpServletRequest req, HttpServletResponse res) throws MemberException;
 

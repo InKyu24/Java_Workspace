@@ -7,7 +7,7 @@ public interface MemberService {
 
 	void memInsert(MemberVO memberVO) throws MemberException;
 
-	String memLogin(MemberVO memVO) throws MemberException;
+	String login(MemberVO memVO) throws MemberException;
 
 	String memFindId(MemberVO memVO) throws MemberException;
 

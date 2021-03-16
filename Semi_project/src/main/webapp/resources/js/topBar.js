@@ -6,6 +6,6 @@ $(document).ready(function(){
 	
 	$("#contact").click(function(){
 		$("#list").hide();
-		$(".mainContent").load("/contact.camp");
+        
 	});
 });

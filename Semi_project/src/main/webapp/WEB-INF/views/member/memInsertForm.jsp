@@ -51,18 +51,18 @@
 			    				</div>
 			    			</div>	    	
 			    					
-			    			<div class="row">
+    						<div class="row">
 			    				<div class="col-md-6">
 			    					<div class="form-group">
-			                <input type="number" name="userPhone" id="phone" class="form-control input-sm" value=01012345678 placeholder="전화번호 입력">
+			                <input type="number" name="userPhone" id="phone" class="form-control input-sm" placeholder="전화번호 입력 (하이픈- 사용없이)" pattern="[0-9]{11}"/>
 			    					</div>
 			    				</div>
-			    			</div>
+			    			</div>	
 			    			
-			    			<div class="row">
+		    				<div class="row">
 			    				<div class="col-md-6">
 			    					<div class="form-group">
-			                <input type="date" name="userBirth" id="birth" class="form-control input-sm" placeholder="생년월일 입력">
+			                <input type="date" name="userBirth" id="birth" class="form-control input-sm" value="1991-01-01">
 			    					</div>
 			    				</div>
 			    			</div>

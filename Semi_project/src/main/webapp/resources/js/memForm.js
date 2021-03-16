@@ -1,4 +1,24 @@
 $(document).ready(function(){
+
+	$("#memLogin").click(function(){//로그인 처리	
+		
+		var _id=$("#id").val();
+		var _pw=$("#pw").val();
+		
+		if (_id == '' || _pw == '') {
+			alert("아이디 또는 비밀번호가 입력되지 않았습니다.")
+		}
+		
+		$.post("/member/login.camp",
+			{id:_id, pw:_pw},
+			function(data){
+			$("#loginForm").hide();
+			$('#memInfo').html(data);
+			$("#memProfile").html("<a class='nav-link' href='#' id='myProfile'>my Profile</a>");
+		})
+		return false;
+	});
+	
 	$('#memInsert').click(function(){ //회원 가입 처리
 		var _name = $('#name').val();
 		var _id = $('#id').val();
@@ -49,9 +69,8 @@ $(document).ready(function(){
 			}
 		});
 	});
-});
-	
-$(document).ready(function(){
+
+
 	$('#memFindId').click(function(){ // 아이디 찾기 처리
 		var _name = $('#nameForId').val();
 		var _birth = $('#birthForId').val();
@@ -60,13 +79,14 @@ $(document).ready(function(){
 		if (_name == '') {
 		alert("이름을 입력해주세요.");
 		return;
-		}		
-		if (_birth == '') {
-		alert("생년월일을 입력해주세요.");
-		return;
 		}
 		if (_phone == '') {
 		alert("전화번호를 입력해주세요.");
+		return;
+		}
+		
+		if (_birth == '') {
+		alert("생년월일을 입력해주세요.");
 		return;
 		}
 		$.ajax({
@@ -81,9 +101,8 @@ $(document).ready(function(){
 			}
 		})
 	});
-});
-	
-$(document).ready(function(){
+
+
 	$('#memFindPw').click(function(){ // 비밀번호 찾기 처리
 		var _id = $('#id').val();
 		var _name = $('#name').val();
@@ -102,6 +121,7 @@ $(document).ready(function(){
 		alert("전화번호를 입력해주세요.");
 		return;
 		}
+		
 		if (_birth == '') {
 		alert("생년월일을 입력해주세요.");
 		return;
@@ -119,4 +139,6 @@ $(document).ready(function(){
 			}
 		})
 	});
+	
+
 });

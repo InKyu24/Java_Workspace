@@ -12,9 +12,18 @@
   <title>캠핑용품 쇼핑몰</title>
 
   <!-- Bootstrap core CSS -->
-  
+   
   <link href="${contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css"> body { padding-top: 56px; } #id, #pw {width: 150px;} #memLogin {vertical-align:center}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<!-- <script>
+$(function(){
+
+var login=$.cookie('logined');
+$("#loginForm").show;
+});
+</script> -->
+
 </head>
 <body>
 
@@ -64,9 +73,11 @@
 				<td><input type="password" id="pw" class="form-control input-sm" placeholder="비밀번호 입력"></td>
 				
 				</table>
-			</form>
+				
 			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memFindForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=750');">ID/PW 찾기</button>
-			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memInsertForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');">회원가입</button>
+			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memInsertForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');">회원가입</button>	
+			</form>
+			
         </div>
         	<div id="msgDiv"></div>
        	<div id="list" class="my-4">
@@ -233,10 +244,11 @@
 
   <!-- Bootstrap core JavaScript -->
   <script src="${contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="${contextPath}/resources/js/memLogin.js"></script>
+
   <script src="${contextPath}/resources/js/prodDisplay.js"></script>
   <script src="${contextPath}/resources/js/topBar.js"></script>
-  <script src="${contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="${contextPath}/resources/js/memForm.js"></script>
 
 </body>
 </html>

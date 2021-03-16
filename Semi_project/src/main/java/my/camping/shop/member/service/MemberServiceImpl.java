@@ -18,7 +18,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String memLogin(MemberVO memVO) throws MemberException{
+	public String login(MemberVO memVO) throws MemberException{
 		return memDAO.login(memVO);		
 	}
 

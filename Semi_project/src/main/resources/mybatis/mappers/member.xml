@@ -19,7 +19,7 @@
 		]]>
 	</insert>
 	
-	<select id="memLogin" resultType="String" parameterType="memberVO">
+	<select id="login" resultType="String" parameterType="memberVO">
 		<![CDATA[
 			select name from campmem where id=#{id} and pw=#{pw}
 		]]>
