@@ -11,7 +11,7 @@ public interface MemberService {
 
 	String memFindId(MemberVO memVO) throws MemberException;
 
-	String memFindPw(MemberVO memVO);
+	String memFindPw(MemberVO memVO) throws MemberException;
 	
 
 }

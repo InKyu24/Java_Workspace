@@ -1,5 +1,6 @@
 package my.camping.shop.member.controller;
 
+import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,8 +37,8 @@ public class MemberControllerImpl implements MemberController {
 	@RequestMapping(value = "/memInsert.camp", produces = "application/text; charset=utf8", method= {RequestMethod.GET, RequestMethod.POST})		
 	@ResponseBody
 	public String memInsert (HttpServletRequest req, HttpServletResponse res) throws MemberException{
-		String id=req.getParameter("id");
 		String name=req.getParameter("name");
+		String id=req.getParameter("id");
 		String pw=req.getParameter("pw");
 		String phone= req.getParameter("phone");
 		String birth= req.getParameter("birth");
@@ -56,6 +57,7 @@ public class MemberControllerImpl implements MemberController {
 		
 		memVO = new MemberVO(id, pw);
 		String name= memService.memLogin(memVO);
+		
 		if (name == null) {
 			System.out.println("로그인 실패 아이디: "+id+"\t비밀번호: "+pw+"\t이름: "+name);
 			return "로그인 실패";
@@ -76,29 +78,43 @@ public class MemberControllerImpl implements MemberController {
 	}
 	
 	@Override
-	@RequestMapping(value = "/memFindId.camp", produces = "application/text; charset=utf8", method= {RequestMethod.GET, RequestMethod.POST})		
+	@RequestMapping(value = "/memFindId.camp", produces = "application/text; charset=utf8", method= RequestMethod.POST)		
 	@ResponseBody
 	public String memFindId (HttpServletRequest req, HttpServletResponse res) throws MemberException{
 		String name=req.getParameter("name");
+		String phone= req.getParameter("phone");
 		String birth= req.getParameter("birth");
-		memVO = new MemberVO(name, birth);
+		
+		memVO = new MemberVO (name, phone, birth);
 		String id = memService.memFindId(memVO);
-		System.out.println("아이디 찾기 결과: "+id);
-		return id+"로 가입하셨던 것 같네요.\n메인페이지에서 로그인 해주세요";
+		System.out.println(memVO);
+		if (id == null) {
+			System.out.println("id = null!!!!");
+			return "아이디를 찾지 못했습니다";
+		} else {
+			return id+"로 가입하셨던 것 같네요.\n메인페이지에서 로그인 해주세요";
+		}
 	}	
 	
 	@Override
-	@RequestMapping(value = "/memFindPw.camp", produces = "application/text; charset=utf8", method= {RequestMethod.GET, RequestMethod.POST})		
+	@RequestMapping(value = "/memFindPw.camp", produces = "application/text; charset=utf8", method= RequestMethod.POST)		
 	@ResponseBody
 	public String memFindPw (HttpServletRequest req, HttpServletResponse res) throws MemberException{
-		String id=req.getParameter("id");
 		String name=req.getParameter("name");
+		String id=req.getParameter("id");
 		String phone= req.getParameter("phone");
 		String birth= req.getParameter("birth");
-		memVO = new MemberVO(id, name, phone, birth);
+		
+		memVO = new MemberVO(name, id, phone, birth);
 		String pw = memService.memFindPw(memVO);
-		System.out.println("비밀번호 찾기 결과: "+pw);
-		return "혼자만 보세요!\n(속닥속닥)\n"+name+"님의 비밀번호는 "+pw+"입니다.\n메인페이지에서 로그인 해주세요";
+		System.out.println(memVO);
+		if (pw==null) {
+			System.out.println("pw = null!!!!");
+			return "비밀번호를 찾지 못했습니다";
+		} else {
+			return "혼자만 보세요!\n(속닥속닥)\n"+name+"님의 비밀번호는 "+pw+"입니다.\n메인페이지에서 로그인 해주세요";
+		}
+
 	}		
 	
 }

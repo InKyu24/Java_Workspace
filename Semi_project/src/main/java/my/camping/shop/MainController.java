@@ -13,12 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * Handles requests for the application home page.
  */
-@Controller
+@Controller("main")
 public class MainController {
 	@RequestMapping(value = "/main.camp", method = {RequestMethod.GET, RequestMethod.POST})
 	public String home() {
 		return "main";
 	}
 	
-	
+	@RequestMapping(value = "/contact.camp", method = {RequestMethod.GET, RequestMethod.POST})
+	public String Contact() {
+		return "main/contact";
+	}
 }

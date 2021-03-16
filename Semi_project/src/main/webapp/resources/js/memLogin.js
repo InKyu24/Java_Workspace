@@ -11,7 +11,9 @@ $(document).ready(function(){
 		$.post("/member/memLogin.camp",
 			{id:_id, pw:_pw},
 			function(data){
-			$("#memInfo").html(data)
-		})		
+			alert(data);
+			$("#memInfo").html(data);
+			$("#memProfile").html("<a class='nav-link' href='#' id='myProfile'>my Profile</a>");
+		})
 	});
 });

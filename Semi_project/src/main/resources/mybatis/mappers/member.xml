@@ -25,14 +25,14 @@
 		]]>
 	</select>
 	
-	<select id="memFindId" resultType="String" parameterType="String">
+	<select id="memFindId" resultType="String" parameterType="memberVO">
 		<![CDATA[
-			select id from campmem where name=#{name} and birth=#{birth}
+			select id from campmem where name=#{name} and birth=#{birth} and phone=${phone}
 		]]>
 		
 	</select>
 	
-		<select id="memFindPw" resultType="String" parameterType="String">
+		<select id="memFindPw" resultType="String" parameterType="memberVO">
 		<![CDATA[
 			select pw from campmem where id=#{id} and name=#{name} and phone=#{phone} and birth=#{birth} 
 		]]>
@@ -44,13 +44,6 @@
 		]]>
 	</select>
 	
-	
-	
-	<select id="memByPw"  resultMap="memResult" parameterType="String">
-		<![CDATA[
-			select * from campmem where pw=#{pw}
-		]]>
-	</select>
 	
 	<update  id="memUpdate"  parameterType="memberVO" >
 		<![CDATA[

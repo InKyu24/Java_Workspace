@@ -49,24 +49,30 @@ $(document).ready(function(){
 			}
 		});
 	});
+});
 	
+$(document).ready(function(){
 	$('#memFindId').click(function(){ // 아이디 찾기 처리
 		var _name = $('#nameForId').val();
 		var _birth = $('#birthForId').val();
+		var _phone = $('#phoneForId').val();
 		
 		if (_name == '') {
 		alert("이름을 입력해주세요.");
 		return;
-		}
+		}		
 		if (_birth == '') {
 		alert("생년월일을 입력해주세요.");
 		return;
 		}
-		
+		if (_phone == '') {
+		alert("전화번호를 입력해주세요.");
+		return;
+		}
 		$.ajax({
 			type: "post",
 			url: "/member/memFindId.camp",
-			data: { name:_name, birth:_birth },
+			data: { name:_name, birth:_birth, phone:_phone },
 			success: function(data){
 				alert(data);			
 			},
@@ -75,7 +81,9 @@ $(document).ready(function(){
 			}
 		})
 	});
+});
 	
+$(document).ready(function(){
 	$('#memFindPw').click(function(){ // 비밀번호 찾기 처리
 		var _id = $('#id').val();
 		var _name = $('#name').val();
@@ -111,5 +119,4 @@ $(document).ready(function(){
 			}
 		})
 	});
-			
 });

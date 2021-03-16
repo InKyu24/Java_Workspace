@@ -38,7 +38,15 @@
 			    					</div>
 			    				</div>
 			    			</div>
-			    		
+			    			
+			    			<div class="row">
+			    				<div class="col-md-6">
+			    					<div class="form-group">
+			                <input type="number" name="userPhone" id="phoneForId" class="form-control input-sm" value=01012345678 placeholder="전화번호 입력">
+			    					</div>
+			    				</div>
+			    			</div>	
+			    			
 			    			<input type="submit" id="memFindId" value="아이디찾기" class="btn btn-info btn-block">
 			    		
 			    		</form>
