@@ -1,11 +1,10 @@
 package my.camping.shop.member.controller;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,7 @@ import my.camping.shop.member.service.MemberService;
 import my.camping.shop.member.util.MemberException;
 import my.camping.shop.member.vo.MemberVO;
 
-@Controller
+@Controller("membercontroller")
 @RequestMapping("/member")
 public class MemberControllerImpl implements MemberController {
 	
@@ -58,7 +57,7 @@ public class MemberControllerImpl implements MemberController {
 	public String login (HttpServletRequest req, HttpServletResponse res) throws MemberException{
 		String id=req.getParameter("id");
 		String pw=req.getParameter("pw");
-		
+		JSONObject json=new JSONObject();
 		try {
 			memVO = new MemberVO(id, pw);
 			String name= memService.login(memVO);
@@ -67,26 +66,20 @@ public class MemberControllerImpl implements MemberController {
 				HttpSession session=req.getSession();
 				session.setAttribute("userInfo", memVO);
 				System.out.println("로그인 성공 아이디: "+id+"\t비밀번호: "+pw+"\t이름: "+name);
-				return name+"님과 함께 캠핑가고 싶은 날이에요 <br> <form><input class='btn btn-dark btn btn-primary btn-sm' id='logout' type='submit' value='LOGOUT'></form>";
+				json.put("memCart", "<a class='nav-link' href='#' id='cart'>"+name+"'s Cart</a>");
+				json.put("name", name);
+				json.put("logoutBtn", "<button type='submit' class='btn btn-lg btn-dark' id='logout'>로그아웃</button>");
+								
 			} else {
 				System.out.println("로그인 실패 아이디: "+id+"\t비밀번호: "+pw+"\t이름: "+name);
-				return "<small>로그인에 성공하지 못했습니다</small>"
-						+ "<form id='loginForm' method='post'>"
-						+ "<table>"
-						+ "<tr>"
-						+ "<td><input type='text' id='id' class='form-control input-sm placeholder='아이디 입력'> </td>"
-						+ "<td rowspan='2' align='center'><button type='submit' class='btn btn-lg btn-dark' id='memLogin'>로그인</button> </td>"
-						+ "</tr>"
-						+ "<tr>"
-						+ "<td><input type='password' id='pw' class='form-control input-sm' placeholder='비밀번호 입력'></td>"
-						+ "</table>"
-						+ "<button class='btn btn-light btn-primary btn-sm' onclick='window.open('member/memFindForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=750');'>ID/PW 찾기</button>"
-						+ "<button class='btn btn-light btn-primary btn-sm' onclick='window.open('member/memInsertForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');'>회원가입</button>"
-						+ "</form>";
+				json.put("msg", "다시 시도해주세요");
+					
 			}
 		} catch (MemberException e) {
-			return e.getMessage();
+			json.put("msg", e.getMessage());
 		}
+		System.out.println("json.toJSONString() : "+json.toJSONString());
+		return json.toJSONString();
 	}		
 	
 	@Override
@@ -143,5 +136,15 @@ public class MemberControllerImpl implements MemberController {
 		}
 		
 	}		
+	
+	@Override
+	@RequestMapping(value = "/logout.camp", method= RequestMethod.POST, produces = "application/text; charset=utf8")			
+	@ResponseBody
+	public String logout(HttpServletRequest req, HttpServletResponse res){
+			HttpSession session=req.getSession(false);
+			session.invalidate();
+			return "";
+	}
+
 	
 }

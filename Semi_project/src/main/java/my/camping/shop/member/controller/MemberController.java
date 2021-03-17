@@ -23,5 +23,7 @@ public interface MemberController {
 
 	String memFindPw(HttpServletRequest req, HttpServletResponse res) throws MemberException;
 
+	String logout(HttpServletRequest req, HttpServletResponse res);
+
 
 }

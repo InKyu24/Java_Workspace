@@ -1,6 +1,16 @@
-$(document).ready(function(){
+$(document).on("click", "#logout", function(event) { //로그아웃 처리	
+	$.post("/member/logout.camp",
+		{ },
+		function(data, status){		  	
+		$.removeCookie("logined");
+		$.removeCookie("cart");	    
+		location.reload();						   
+	  	}
+	);//end post() 
+});//end 로그아웃 처리
 
-	$("#memLogin").click(function(){//로그인 처리	
+$(document).ready(function(){
+	$("#login").click(function(){//로그인 처리	
 		
 		var _id=$("#id").val();
 		var _pw=$("#pw").val();
@@ -11,13 +21,25 @@ $(document).ready(function(){
 		
 		$.post("/member/login.camp",
 			{id:_id, pw:_pw},
-			function(data){
-			$("#loginForm").hide();
-			$('#memInfo').html(data);
-			$("#memProfile").html("<a class='nav-link' href='#' id='myProfile'>my Profile</a>");
-		})
-		return false;
+			function(data, status){
+				var obj = JSON.parse(data);
+				if (obj.msg) {
+					alert(obj.msg);
+			  		location.reload();
+			  	} else {
+			  		data = obj.logoutBtn
+			  		$.cookie("logined",data);
+			  		$("#loginDiv").html(data);
+			  		
+			  		data = obj.memCart	
+			  		$.cookie("cart",data);
+			  		$("#cartLi").html(data);
+		  		}
+			}
+		);
+			
 	});
+		
 	
 	$('#memInsert').click(function(){ //회원 가입 처리
 		var _name = $('#name').val();
@@ -57,17 +79,13 @@ $(document).ready(function(){
 		return;
 		}
 		
-		$.ajax({
-			type: "post",
-			url: "/member/memInsert.camp",
-			data: { name:_name, id:_id, pw:_pw, phone:_phone, birth:_birth },
-			success: function(data){
-				alert(data);
-			},
-			complete: function() {
+		$.post("/member/memInsert.camp",
+			{ name:_name, id:_id, pw:_pw, phone:_phone, birth:_birth },
+			function(data, status){
+				alert(data)
 				self.close();
 			}
-		});
+		);
 	});
 
 
@@ -89,17 +107,14 @@ $(document).ready(function(){
 		alert("생년월일을 입력해주세요.");
 		return;
 		}
-		$.ajax({
-			type: "post",
-			url: "/member/memFindId.camp",
-			data: { name:_name, birth:_birth, phone:_phone },
-			success: function(data){
+		
+		$.post("/member/memFindId.camp",
+			{ name:_name, birth:_birth, phone:_phone },
+			function(data, status){
 				alert(data);			
-			},
-			complete: function() {
 				self.close();
 			}
-		})
+		);
 	});
 
 
@@ -127,18 +142,12 @@ $(document).ready(function(){
 		return;
 		}
 		
-		$.ajax({
-			type: "post",
-			url: "/member/memFindPw.camp",
-			data: { name:_name, id:_id, phone:_phone, birth:_birth },
-			success: function(data){
-				alert(data);
-			},
-			complete: function() {
+		$.post("/member/memFindPw.camp",
+			{ name:_name, id:_id, phone:_phone, birth:_birth },
+			function(data, status){
+				alert(data);		
 				self.close();
 			}
-		})
-	});
-	
-
+		);
+	});	
 });
