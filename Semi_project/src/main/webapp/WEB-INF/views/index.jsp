@@ -46,7 +46,7 @@ button:hover { color: "white"}
             <a class="nav-link" href="#" id="about">About</a>
           </li>
           <li class="nav-item">
-          	<a class="nav-link" href="#" id="contact">Contact</a>
+          	<a class="nav-link" href="#" id="contact">Community</a>
           </li>
           <li class="nav-item" id="cartLi">       
           </li>
