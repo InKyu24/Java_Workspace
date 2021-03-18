@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Handles requests for the application home page.
  */
-@Controller("main")
+@Controller("/main")
 public class MainController {
-	
 
-	
 	@RequestMapping(value = "/main.camp", method = {RequestMethod.GET, RequestMethod.POST})
 	public String home() {
 		return "index";

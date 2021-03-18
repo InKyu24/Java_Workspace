@@ -77,7 +77,6 @@ public class MemberControllerImpl implements MemberController {
 		} catch (MemberException e) {
 			json.put("msg", e.getMessage());
 		}
-		System.out.println("json.toJSONString() : "+json.toJSONString());
 		return json.toJSONString();
 	}		
 	

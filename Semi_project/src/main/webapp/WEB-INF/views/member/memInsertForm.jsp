@@ -6,7 +6,6 @@
 <head>
 <link href="${contextpath}/resources/css/memForm.css" rel="stylesheet" id="bootstrap-css">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="${contextPath}/resources/js/memForm.js"></script>
 <meta charset="UTF-8">
@@ -18,7 +17,7 @@
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         	<div class="panel panel-default">
         		<div class="panel-heading">
-			    		<h3 class="panel-title">캠핑을 좋아한다면 바로 가입 하세요! <small>그리고 지갑을 여세요!</small></h3>
+			    		<h3 class="panel-title">캠핑을 좋아한다면 바로 불멍에 가입 하세요! <small>그리고 지갑을 여세요!</small></h3>
 			 			</div>
 			 			<div class="panel-body">
 			    		<form method="post">

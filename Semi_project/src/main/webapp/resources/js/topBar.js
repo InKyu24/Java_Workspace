@@ -9,3 +9,7 @@ $(document).ready(function(){
         
 	});
 });
+
+$(document).on("click", "#cart", function(event) { // 장바구니
+	$(".mainContent").load("/prod/cart.camp");
+});

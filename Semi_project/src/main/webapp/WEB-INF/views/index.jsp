@@ -14,32 +14,33 @@
   <!-- Bootstrap core CSS -->
    
   <link href="${contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<style type="text/css"> body { padding-top: 56px; } #id, #pw {width: 150px;} #memLogin {vertical-align:center}</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<!-- <script>
-$(function(){
+<style type="text/css">
+ a:link { color: rgb(192, 45, 17); text-decoration: none;}
+ a:visited { color: rgb(192, 45, 17); text-decoration: none;}
+ a:hover { color: rgb(192, 45, 17); text-decoration: underline;}
+ a.orderForm {color: rgb(29, 32, 60);}
+ a.list-group-item {background-color: rgb(247, 196, 133); border-color: rgb(235,151,97);}
+ #category0 {background-color: rgb(227, 116, 76); border-color: rgb(235,151,97);}
+ #headerBar, #footerBar {background-color: rgb(15,17,37);}
+body { padding-top: 56px; background-color: rgb(247, 239, 216);} #id, #pw {width: 150px;}
+button#login {height: 60px;}
+button:hover { color: "white"}
 
-var login=$.cookie('logined');
-$("#loginForm").show;
-});
-</script> -->
-
+</style>
 </head>
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="headerBar">
     <div class="container">
-      <a class="navbar-brand" href="/main.camp">Camping Shop</a>
+      <a class="navbar-brand" id="logo" href="/main.camp">Camping Shop</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/main.camp">Home
-              <span class="sr-only">(current)</span>
-            </a>
+          <li class="nav-item">
+            <a class="nav-link" href="/main.camp">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" id="about">About</a>
@@ -47,8 +48,7 @@ $("#loginForm").show;
           <li class="nav-item">
           	<a class="nav-link" href="#" id="contact">Contact</a>
           </li>
-          <li class="nav-item" id="memProfile">
-            
+          <li class="nav-item" id="cartLi">       
           </li>
         </ul>
       </div>
@@ -61,38 +61,38 @@ $("#loginForm").show;
     <div class="row">
 
       <div class="col-lg-3 my-4">
-		
-		<div class="memForm" id="memInfo">
-        	<form id='loginForm' method='post'>
-        		<table>
-         	<tr>		
-				<td><input type="text" id="id" class="form-control input-sm" placeholder="아이디 입력"> </td>
-				<td rowspan="2" align="center"><button type="submit" class="btn btn-lg btn-dark" id="memLogin">로그인</button> </td>
-			</tr>
-			<tr>
-				<td><input type="password" id="pw" class="form-control input-sm" placeholder="비밀번호 입력"></td>
+			<div id="loginDiv" align="center">
+	
+        	<form id='loginForm' method='post'>        		
+        	<table>
+         		<tr>		
+				<td><input type="text" id="id" class="form-control input-sm" placeholder="아이디 입력" autofocus tabindex="1"> </td>
+				<td rowspan="2"><button type="submit" class="btn btn-lg btn-danger" id="login">로그인</button> </td>
+				</tr>
+				<tr>
+				<td><input type="password" id="pw" class="form-control input-sm" placeholder="비밀번호 입력" autofocus tabindex="2"></td>
 				
-				</table>
-				
-			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memFindForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=750');">ID/PW 찾기</button>
-			<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memInsertForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');">회원가입</button>	
+			</table>
+			<br>
+				<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memInsertForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');">회원가입</button>
+				<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memFindForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=750');">ID/PW 찾기</button>	
 			</form>
+			<br>
+			</div>
 			
-        </div>
-        	<div id="msgDiv"></div>
        	<div id="list" class="my-4">
-        <div class="list-group">
-          <a href="#" class="list-group-item active" id="category0">캠핑 용품 <small>(전체보기)</small></a>
-          <a href="#" class="list-group-item" id="category1">텐트/타프/쉘터</a>
-          <a href="#" class="list-group-item" id="category2">침구/매트</a>
-          <a href="#" class="list-group-item" id="category3">테이블/체어</a>
-          <a href="#" class="list-group-item" id="category4">취사용품</a>
-          <a href="#" class="list-group-item" id="category5">화로/히터</a>
-          <a href="#" class="list-group-item" id="category6">악세사리</a>
-        </div>
-		</div>
-      </div>
-      <!-- /.col-lg-3 -->
+	        <div class="list-group">
+	          <a href="#" class="list-group-item" id="category0"><b>캠핑 용품 <small>(전체보기)</small></b></a>
+	          <a href="#" class="list-group-item" id="category1">텐트/타프/쉘터</a>
+	          <a href="#" class="list-group-item" id="category2">침구/매트</a>
+	          <a href="#" class="list-group-item" id="category3">테이블/체어</a>
+	          <a href="#" class="list-group-item" id="category4">취사용품</a>
+	          <a href="#" class="list-group-item" id="category5">화로/히터</a>
+	          <a href="#" class="list-group-item" id="category6">악세사리</a>
+	        </div>
+		</div><!-- list -->
+	
+	</div><!-- /.col-lg-3 -->
 
       <div class="col-lg-9 mainContent">
 
@@ -130,14 +130,13 @@ $("#loginForm").show;
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="/resources/img_source/prod_img/tent1.jpg" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">[와일드랜드]노르망디 오토 루프탑 텐트</a>
+                <h4 class="card-title" align="center">
+                  <small><a href="#" class="orderForm" name='[와일드랜드] 노르망디 루프탑 텐트'>[와일드랜드]<br>노르망디 루프탑 텐트</a></small>
                 </h4>
-                <h5>5,000,000 원</h5>
-                <p class="card-text">다른 곳에서 사면 훨씬 저렴하게 구매 가능해요!</p>
+                <p class="card-text" align="center"><small>펼치면 별장이 되는 루프탑 텐트</small></p><h5>300,000 원</h5>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <small class="text-muted">⭐⭐⭐⭐⭐</small>
               </div>
             </div>
           </div>
@@ -146,14 +145,13 @@ $("#loginForm").show;
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="/resources/img_source/prod_img/tent2.jpg" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">[듀랑고]R2</a>
+                <h4 class="card-title" align="center">
+                  <small><a href="#" class="orderForm" name='[듀랑고] R2'>[듀랑고]<br>R2</a></small>
                 </h4>
-                <h5>4,500 원</h5>
-                <p class="card-text">담배 한 갑이면 텐트를 살 수 있어요.</p>
+                <p class="card-text" align="center"><small>캔버스 텐트의 대명사</small></p><h5>150,000 원</h5>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <small class="text-muted">⭐⭐⭐⭐</small>
               </div>
             </div>
           </div>
@@ -162,14 +160,13 @@ $("#loginForm").show;
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="/resources/img_source/prod_img/cook1.jpg" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">[제드코리아]키친보드&블랙나이프(도마)</a>
+                <h4 class="card-title" align="center">
+                  <small><a href="#" class="orderForm" name='[제드코리아] 키친보드&블랙나이프'>[제드코리아]<br>키친보드&블랙나이프</a></small>
                 </h4>
-                <h5>500,000,000 원</h5>
-                <p class="card-text">전설의 도마</p>
+                <p class="card-text" align="center"><small>컴팩트한 수납, 위생적인 조리</small></p><h5>40,000 원</h5>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <small class="text-muted">⭐⭐</small>
               </div>
             </div>
           </div>
@@ -178,14 +175,13 @@ $("#loginForm").show;
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="/resources/img_source/prod_img/bed1.jpg" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">[씨투써미트]플레임 FM4 LN 다크 그레이 여성용 침낭</a>
+                <h4 class="card-title" align="center">
+                  <small><a href="#" class="orderForm" name='[씨투써미트] 플레임 FM4 여성용 침낭'>[씨투써미트]<br>플레임 FM4 여성용 침낭</a></small>
                 </h4>
-                <h5>999,999 원</h5>
-                <p class="card-text">당연하게도 침낭은 무거울수록 따뜻하지만 힘이 든다!</p>
+                <p class="card-text" align="center"><small>유니크한 디자인, 나만의 침낭</small></p><h5>300,000 원</h5>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <small class="text-muted">⭐⭐⭐⭐</small>
               </div>
             </div>
           </div>
@@ -194,14 +190,13 @@ $("#loginForm").show;
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="/resources/img_source/prod_img/table1.jpg" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">[몬테라]롱 릴렉스 워머</a>
+                <h4 class="card-title" align="center">
+                  <small><a href="#" class="orderForm" name='[몬테라] 롱 릴레스 워머'>[몬테라]<br>롱 릴렉스 워머</a></small>
                 </h4>
-                <h5>777,777 원</h5>
-                <p class="card-text">뚱뚱하면 캠핑 의자를 매번 망가뜨린다.</p>
+                <p class="card-text" align="center"><small>냉기 차단 효과와 탁월한 착좌감</small></p><h5>33,000 원</h5>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <small class="text-muted">⭐⭐⭐</small>
               </div>
             </div>
           </div>
@@ -210,14 +205,13 @@ $("#loginForm").show;
             <div class="card h-100" id='prod6'>
               <a href="#"><img class="card-img-top" src="/resources/img_source/prod_img/heat1.jpg" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">[카즈미]카민 PTC 히터</a>
+                <h4 class="card-title" align="center">
+                  <small><a href="#" class="orderForm" name='[카즈미] 카민 PTC 히터'>[카즈미]<br>카민 PTC 히터</a></small>
                 </h4>
-                <h5>55,555 원</h5>
-                <p class="card-text">Winter is coming!</p>
+                <p class="card-text" align="center"><small>언제 어디서나 간편하고 따뜻하게!</small></p><h5>50,000 원</h5>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <small class="text-muted">⭐⭐⭐</small>
               </div>
             </div>
           </div>
@@ -235,9 +229,9 @@ $("#loginForm").show;
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-3" id="footerBar">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Camping shop 2021</p>
+      <p class="m-0 text-center text-white">Copyright &copy; 불멍 2021</p>
     </div>
     <!-- /.container -->
   </footer>
@@ -245,10 +239,21 @@ $("#loginForm").show;
   <!-- Bootstrap core JavaScript -->
   <script src="${contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 
-  <script src="${contextPath}/resources/js/prodDisplay.js"></script>
+  <script src="${contextPath}/resources/js/prodForm.js"></script>
   <script src="${contextPath}/resources/js/topBar.js"></script>
   <script src="${contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
   <script src="${contextPath}/resources/js/memForm.js"></script>
 
 </body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script>
+	$(function(){
+		var login=$.cookie('logined');
+		$("#loginDiv").html(login);
+		var cart=$.cookie('cart');
+		$("#cartLi").html(cart);
+		
+	});
+	</script>
+	
 </html>

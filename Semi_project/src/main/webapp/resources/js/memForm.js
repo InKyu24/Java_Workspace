@@ -1,9 +1,11 @@
 $(document).on("click", "#logout", function(event) { //로그아웃 처리	
 	$.post("/member/logout.camp",
 		{ },
-		function(data, status){		  	
+		function(data, status){
+		$.removeCookie("name");		  	
 		$.removeCookie("logined");
-		$.removeCookie("cart");	    
+		$.removeCookie("cart");
+		$.removeCookie("basket", { path: '/' });				// 장바구니 비우기 (계정마다 다른 장바구니로 구현 가능할 때 변경?)
 		location.reload();						   
 	  	}
 	);//end post() 
@@ -27,6 +29,7 @@ $(document).ready(function(){
 					alert(obj.msg);
 			  		location.reload();
 			  	} else {
+			  	
 			  		data = obj.logoutBtn
 			  		$.cookie("logined",data);
 			  		$("#loginDiv").html(data);

@@ -1,7 +1,5 @@
 package my.camping.shop.member.vo;
 
-import java.util.Date;
-
 public class MemberVO {
 	String name, id, pw, phone, birth;
 	
