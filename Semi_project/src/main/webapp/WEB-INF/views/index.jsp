@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>캠핑용품 쇼핑몰</title>
+  <title>불멍 - 캠핑 전문 쇼핑몰</title>
 
   <!-- Bootstrap core CSS -->
    
@@ -22,7 +22,7 @@
  a.list-group-item {background-color: rgb(247, 196, 133); border-color: rgb(235,151,97);}
  #category0 {background-color: rgb(227, 116, 76); border-color: rgb(235,151,97);}
  #headerBar, #footerBar {background-color: rgb(15,17,37);}
-body { padding-top: 56px; background-color: rgb(247, 239, 216);} #id, #pw {width: 150px;}
+body { padding-top: 80px; background-color: rgb(247, 239, 216);} #id, #pw {width: 150px;}
 button#login {height: 60px;}
 button:hover { color: "white"}
 
@@ -33,7 +33,7 @@ button:hover { color: "white"}
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="headerBar">
     <div class="container">
-      <a class="navbar-brand" id="logo" href="/main.camp">Camping Shop</a>
+      <a class="navbar-brand" id="logo" href="/main.camp"><img src="resources/img_source/logo.png" width=149 height=51></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -77,7 +77,6 @@ button:hover { color: "white"}
 				<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memInsertForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=500');">회원가입</button>
 				<button class="btn btn-light btn-primary btn-sm" onclick="window.open('member/memFindForm.camp', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=750');">ID/PW 찾기</button>	
 			</form>
-			<br>
 			</div>
 			
        	<div id="list" class="my-4">

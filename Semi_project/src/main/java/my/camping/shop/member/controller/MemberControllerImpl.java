@@ -67,7 +67,7 @@ public class MemberControllerImpl implements MemberController {
 				session.setAttribute("userInfo", memVO);
 				System.out.println("로그인 성공 아이디: "+id+"\t비밀번호: "+pw+"\t이름: "+name);
 				json.put("memCart", "<a class='nav-link' href='#' id='cart'>"+name+"'s Cart</a>");
-				json.put("logoutBtn", "반갑습니다. <kbd>"+name+"</kbd>님<br>오늘도 즐거운 하루 되세요!<br><button type='submit' class='btn btn-sm btn-danger' id='logout'>로그아웃</button>");
+				json.put("logoutBtn", "반갑습니다. <kbd>"+name+"</kbd>님<br>오늘도 즐거운 하루 되세요!<br><br><button type='submit' class='btn btn-sm btn-danger' id='logout'>로그아웃</button>");
 								
 			} else {
 				System.out.println("로그인 실패 아이디: "+id+"\t비밀번호: "+pw+"\t이름: "+name);
