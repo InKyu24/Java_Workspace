@@ -22,9 +22,7 @@
  a.list-group-item {background-color: rgb(247, 196, 133); border-color: rgb(235,151,97);}
  #category0 {background-color: rgb(227, 116, 76); border-color: rgb(235,151,97);}
  #headerBar, #footerBar {background-color: rgb(15,17,37);}
-body { padding-top: 80px; background-color: rgb(247, 239, 216);} #id, #pw {width: 150px;}
-button#login {height: 60px;}
-button:hover { color: "white"}
+body { padding-top: 80px; } #id, #pw {width: 150px;}
 
 </style>
 </head>
@@ -46,7 +44,7 @@ button:hover { color: "white"}
             <a class="nav-link" href="#" id="about">About</a>
           </li>
           <li class="nav-item">
-          	<a class="nav-link" href="#" id="contact">Community</a>
+          	<a class="nav-link" href="#" id="comm">Community</a>
           </li>
           <li class="nav-item" id="cartLi">       
           </li>
@@ -67,7 +65,7 @@ button:hover { color: "white"}
         	<table>
          		<tr>		
 				<td><input type="text" id="id" class="form-control input-sm" placeholder="아이디 입력" autofocus tabindex="1"> </td>
-				<td rowspan="2"><button type="submit" class="btn btn-lg btn-danger" id="login">로그인</button> </td>
+				<td rowspan="2"><button type="submit" class="btn btn-md btn-danger" id="login">로그인</button> </td>
 				</tr>
 				<tr>
 				<td><input type="password" id="pw" class="form-control input-sm" placeholder="비밀번호 입력" autofocus tabindex="2"></td>

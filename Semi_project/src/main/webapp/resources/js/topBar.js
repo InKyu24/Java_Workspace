@@ -1,11 +1,12 @@
 $(document).ready(function(){
 	$("#about").click(function(){
 		$("#list").hide();
-		$(".mainContent").html("<h1>별거 없소</h1>");
+		$(".mainContent").html("<h1>쇼핑몰 소개 공간 준비 중 입니다.</h1>");
 	});
 	
-	$("#contact").click(function(){
+	$("#comm").click(function(){
 		$("#list").hide();
+		$(".mainContent").html("<h1>커뮤니티 공간 개설 준비 중 입니다.</h1>");
         
 	});
 });

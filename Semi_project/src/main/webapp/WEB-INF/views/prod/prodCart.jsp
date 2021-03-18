@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<body>
+
 	<article class="container">
 	            <div class="col-lg-9 my-4">
 	                <form role="form">
@@ -20,7 +20,7 @@
 				</div>
         </article>
        <script src="${contextPath}/resources/js/prodForm.js"></script>
-</body>
+
 	<script>
 		var basket=$.cookie("basket");	// 쿠키에 저장된 basket을 가져와
 		var obj=null;
